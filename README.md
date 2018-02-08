@@ -30,3 +30,16 @@ git clone https://github.com/kasunintervest/mygarage.git
 ----------------------------------
 bundle install
 rails db:migrate
+
+
+#API ROUTES
+
+Sign in
+-----------------------------------
+http://localhost:3000/api/v1/sessions
+    params: user_email, password
+    response: user_token, email
+
+Get resource
+-----------------------------------
+http://localhost:3000/api/v1/vehicles.json?user_email=admin@example.com&user_token=MHKyhSuXg2QN1h7mnTEX
