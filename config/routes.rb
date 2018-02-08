@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      devise_for :users
+      devise_for :users, :controllers => { registrations: 'registrations' }
       resources :sessions, only: [:create, :destroy]
       resources :vehicles, only: [:index, :create, :destroy, :update, :show]
     end

@@ -36,9 +36,14 @@ rails db:migrate
 
 Sign in
 -----------------------------------
-http://localhost:3000/api/v1/sessions
+POST : http://localhost:3000/api/v1/sessions
     params: user_email, password
     response: user_token, email
+
+Logout
+-----------------------------------
+DELETE: http://localhost:3000/api/v1/sessions/1
+    params: user_token
 
 Get resource
 -----------------------------------
