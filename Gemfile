@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'responders'
 gem 'simple_token_authentication', '~> 1.0'
+gem 'will_paginate', '~> 3.1.0'
 
 gem 'react-rails', '~> 2.4', '>= 2.4.3'
 gem 'webpacker', '~> 3.0'

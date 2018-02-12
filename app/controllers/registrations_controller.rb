@@ -29,7 +29,7 @@ class RegistrationsController < Devise::RegistrationsController
     def account_update_params
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
     end
-  
+
     def authenticate_user_from_token!
       user_email = params[:user_email].presence
       user       = user_email && User.find_by_email(user_email)
