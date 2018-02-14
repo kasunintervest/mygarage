@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: 'page#home'
 
   #devise_for :users, :controllers => { registrations: 'registrations' }
@@ -10,5 +11,9 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create, :destroy]
       resources :vehicles, only: [:index, :create, :destroy, :update, :show]
     end
+  end
+
+  namespace :admin do
+    resources :service_companies
   end
 end

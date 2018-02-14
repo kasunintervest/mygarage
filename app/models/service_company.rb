@@ -1,0 +1,2 @@
+class ServiceCompany < ApplicationRecord
+end
