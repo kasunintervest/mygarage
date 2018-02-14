@@ -3,8 +3,8 @@ class Vehicle < ApplicationRecord
   accepts_nested_attributes_for :pictures
 
   def image
-    if self.pictures.first
-      picture = self.pictures.where("image_file_name <> ''").order('id DESC').first
+    picture = self.pictures.where("image_file_name <> ''").order('id DESC').first
+    if picture
       {:id => picture.id, :original => picture.image.url(:original), :medium => picture.image.url(:medium), :thumb => picture.image.url(:thumb)}
     end
   end

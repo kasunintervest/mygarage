@@ -18,14 +18,24 @@ class Api::V1::VehiclesController < Api::V1::BaseController
   def create
     vehicle = Vehicle.new(vehicle_params)
     vehicle.user_id = current_user.id
-    vehicle.save
-    respond_with :api, :v1, vehicle
+    if vehicle.save
+      uploaded = upload_image vehicle
+
+      if uploaded.errors.messages[:image].any?
+        vehicle.destroy
+        respond_with vehicle, json: { :errors => {:image => uploaded.errors.messages[:image]}}, :status => :unprocessable_entity
+      else
+        render_vehicle vehicle.id
+      end
+    else
+      respond_with :api, :v1, vehicle
+    end
   end
 
   def destroy
     vehicle = Vehicle.find(params[:id])
     if is_owner vehicle
-      respond_with vehicle.destroy(params[:id])
+      respond_with vehicle.destroy
     end
   end
 
