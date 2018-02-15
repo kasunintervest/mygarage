@@ -1,0 +1,44 @@
+{
+  "name": "react-mygarage",
+  "version": "0.1.0",
+  "private": true,
+  "start": "PORT=4000 react-scripts start",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "dotenv": "^5.0.0",
+    "jquery": "^3.3.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-native": "^0.53.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.14",
+    "semantic-ui-react": "^0.78.2",
+    "validator": "^9.4.0"
+  },
+  "scripts": {
+    "set:env": "node setenv.js > .env",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.6.1",
+    "prettier": "^1.10.2"
+  }
+}
