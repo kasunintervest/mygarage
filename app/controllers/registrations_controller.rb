@@ -3,7 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   prepend_before_action :require_no_authentication, only: [:new, :create, :cancel, :update]
   prepend_before_action :authenticate_scope!, only: [:edit, :destroy]
-  before_action :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!, :except => [:create]
 
   def create
     super

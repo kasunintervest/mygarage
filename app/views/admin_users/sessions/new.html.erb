@@ -1,5 +1,16 @@
 <h2>Log in</h2>
 
+<% if alert %>
+    <div id="notice_wrapper">
+      <p class="alert"><%= alert %></p>
+    </div>
+<% elsif notice %>
+    <div id="notice_wrapper">
+      <p class="notice"><%= notice %></p>
+    </div>
+<% end %>
+
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -22,5 +33,3 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-
   root to: 'page#home'
-
-  #devise_for :users, :controllers => { registrations: 'registrations' }
 
   namespace :api do
     namespace :v1 do
@@ -13,7 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :admin_users, path: 'admin', path_names: { sign_in: '/', sign_out: 'logout'}
   namespace :admin do
+    get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     resources :service_companies
   end
 end
