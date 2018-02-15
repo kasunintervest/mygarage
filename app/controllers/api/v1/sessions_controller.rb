@@ -14,7 +14,7 @@ class Api::V1::SessionsController < ApplicationController
 
       render json: { success: true, message: 'Successfully logged in', user_email: user.email, user_token: user.authentication_token } , status: 200
     else
-      render json: { success: false, message: 'Error with your login or password' }, status: 401
+      render json: { success: false, message: 'Error with your login or password '+user_email }, status: 401
     end
   end
 
