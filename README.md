@@ -32,6 +32,11 @@ bundle install
 rails db:migrate
 
 
+# FOLDER PERMISSIONS
+----------------------------------
+sudo chmod 777 -R public/system
+
+
 #API ROUTES
 
 Sign in
