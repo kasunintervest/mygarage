@@ -56,16 +56,16 @@ class LoginForm extends React.Component {
                     <p>{errors}</p>
                 </Message>}
                 <Form.Field error={!!errors.user_email}>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="user_email">Email</label>
                     <input
                         type="email"
-                        id="email"
-                        name="email"
+                        id="user_email"
+                        name="user_email"
                         placeholder="example@example.com"
                         value={data.user_email}
                         onChange={this.onChange}
                     />
-                    {errors.email && <InlineError text={errors.user_email}/>}
+                    {errors.user_email && <InlineError text={errors.user_email}/>}
                 </Form.Field>
                 <Form.Field error={!!errors.password}>
                     <label htmlFor="password">Password</label>
