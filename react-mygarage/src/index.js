@@ -17,7 +17,10 @@ const store = createStore(
 );
 
 if(localStorage.mygarageJWT){
-    const user = { user_token: localStorage.mygarageJWT}
+    const user = {
+        user_token: localStorage.mygarageJWT,
+        email: localStorage.email,
+    }
     store.dispatch(userLoggedIn(user));
 }
 

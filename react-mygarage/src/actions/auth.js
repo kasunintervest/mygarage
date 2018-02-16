@@ -15,11 +15,13 @@ export const
         dispatch =>
             api.user.login(credentials).then(user => {
                 localStorage.mygarageJWT = user.user_token;
+                localStorage.email = user.user_email;
                 dispatch(userLoggedIn(user))
             });
 
 export const
     logout = () => dispatch =>{
         localStorage.removeItem('mygarageJWT');
+        localStorage.removeItem('email');
         dispatch(userLoggedOut());
     };
