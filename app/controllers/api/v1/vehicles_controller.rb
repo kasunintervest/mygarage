@@ -79,7 +79,7 @@ class Api::V1::VehiclesController < Api::V1::BaseController
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:name, :make, :model, :year, :colour)
+    params.require(:vehicle).permit(:name, :make, :model, :year, :colour, :registration_number, :details)
   end
 
   def image_params
