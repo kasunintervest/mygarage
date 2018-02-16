@@ -1,0 +1,19 @@
+<aside class="main-sidebar">
+  <section class="sidebar">
+    <ul class="sidebar-menu" data-widget="tree">
+      <li class="header">MAIN NAVIGATION</li>
+      <li class="<%= current_class?(admin_dashboard_path) %>">
+        <a href="/admin/dashboard">
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="<%= current_class?(admin_service_companies_path) %>">
+        <a href="/admin/service_companies">
+          <i class="fa fa-home"></i>
+          <span>Service Companies</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

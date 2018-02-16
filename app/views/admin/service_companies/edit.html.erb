@@ -1,6 +1,26 @@
-<h1>Editing Service Company</h1>
+<div class="wrapper">
 
-<%= render 'form', service_company: @service_company %>
+  <%= render 'admin/partials/header' %>
 
-<%= link_to 'Show', admin_service_company_path(@service_company) %> |
-<%= link_to 'Back', admin_service_companies_path %>
+  <%= render 'admin/partials/sidebar' %>
+
+  <div style="min-height: 900px" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Editing Service Company</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <%= render 'admin/partials/notices' %>
+
+      <%= render 'form', service_company: @service_company %>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <%= render 'admin/partials/footer' %>
+
+</div>
+<!-- ./wrapper -->

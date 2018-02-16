@@ -1,6 +1,26 @@
-<h1>Admin::Dashboard#index</h1>
-<p>Find me in app/views/admin/dashboard/index.html.erb</p>
+<div class="wrapper">
 
-<%=	@user.inspect  %>
+  <%= render 'admin/partials/header' %>
 
-<%=	@user.roles.first.name.inspect  %>
+  <%= render 'admin/partials/sidebar' %>
+
+  <div style="min-height: 900px" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Dashboard</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <%= render 'admin/partials/notices' %>
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <%= render 'admin/partials/footer' %>
+
+</div>
+<!-- ./wrapper -->
