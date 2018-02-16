@@ -21,6 +21,11 @@ rvm install ruby-2.3.6
 rvm --default use ruby-2.3.6
 
 
+Install ImageMagick
+----------------------------------
+sudo apt-get install imagemagick
+
+
 Install MyGarage App
 ----------------------------------
 git clone https://github.com/kasunintervest/mygarage.git
