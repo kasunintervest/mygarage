@@ -7,7 +7,7 @@
   <div style="min-height: 900px" class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Service Companies</h1>
+      <h1>Service Types</h1>
     </section>
 
     <!-- Main content -->
@@ -25,8 +25,8 @@
                 <div class="input-group input-group-sm" style="width: 150px;">
 
                   <div class="input-group-btn">
-                    <%= link_to new_admin_service_company_path, class: 'btn btn-default' do %>
-                        <i class="fa fa-plus"></i> New Service Company
+                    <%= link_to new_admin_service_type_path, class: 'btn btn-default' do %>
+                        <i class="fa fa-plus"></i> New Service Type
                     <% end %>
                   </div>
                 </div>
@@ -38,33 +38,31 @@
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
-                  <th>Address</th>
-                  <th>Phone</th>
                   <th class="text-center">Publish</th>
                   <th class="text-center">Action</th>
                 </tr>
-                <% @service_companies.each do |service_company| %>
+                <% if @service_types.each do |service_type| %>
                   <tr>
-                    <td><%= service_company.id %></td>
-                    <td><%= link_to service_company.name, edit_admin_service_company_path(service_company) %></td>
-                    <td><%= service_company.address %></td>
-                    <td><%= service_company.phone %></td>
+                    <td><%= service_type.id %></td>
+                    <td><%= link_to service_type.name, edit_admin_service_type_path(service_type) %></td>
                     <td class="text-center">
-                      <% if service_company.publish %>
-                          <i class="fa fa-check"></i>
+                      <% if service_type.publish %>
+                        <i class="fa fa-check"></i>
                       <% else %>
-                          <i class="fa fa-remove"></i>
+                        <i class="fa fa-remove"></i>
                       <% end %>
                     </td>
                     <td class="text-center">
-                      <%= link_to edit_admin_service_company_path(service_company), class: 'btn btn-sm' do %>
+                      <%= link_to edit_admin_service_type_path(service_type), class: 'btn btn-sm' do %>
                           <i class="fa fa-edit"></i>
                       <% end %>
-                      <%= link_to admin_service_company_path(service_company), class: 'btn btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <%= link_to admin_service_type_path(service_type), class: 'btn btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do %>
                           <i class="fa fa-remove"></i>
                       <% end %>
                     </td>
                   </tr>
+                <% end.empty? %>
+                    <tr><td colspan="5">No records.</td></tr>
                 <% end %>
 
               </table>
@@ -72,7 +70,7 @@
             <!-- /.box-body -->
 
             <div class="pull-right">
-              <%= will_paginate @service_companies %>
+              <%= will_paginate @service_types %>
             </div>
 
           </div>

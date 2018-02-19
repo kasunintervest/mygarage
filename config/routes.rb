@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       devise_for :users, skip: [:sessions], :controllers => { registrations: 'registrations' }
       resources :sessions, only: [:create, :destroy]
       resources :vehicles, only: [:index, :create, :destroy, :update, :show]
+      resources :service_companies, only: [:index]
+      resources :service_types, only: [:index]
     end
   end
 
@@ -13,5 +15,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     resources :service_companies
+    resources :service_types
   end
 end
