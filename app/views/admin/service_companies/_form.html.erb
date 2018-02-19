@@ -1,27 +1,59 @@
-<%= form_with(model: [:admin, service_company], local: true) do |form| %>
-  <% if service_company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(service_company.errors.count, "error") %> prohibited this service_company from being saved:</h2>
+<div class="box box-primary">
 
-      <ul>
-      <% service_company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <!-- form start -->
+  <%= form_with(model: [:admin, service_company], local: true) do |form| %>
+
+      <% if service_company.errors.any? %>
+          <div class="alert alert-danger alert-dismissible">
+            <h4><%= pluralize(service_company.errors.count, "error") %> prohibited this service_company from being saved:</h4>
+
+            <ul>
+              <% service_company.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
+
+
+    <div class="box-body">
+      <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, id: :service_company_name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :description %>
+        <%= form.text_field :description, id: :service_company_description, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :address %>
+        <%= form.text_area :address, id: :service_company_address, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :phone %>
+        <%= form.text_field :phone, id: :service_company_phone, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :website_url %>
+        <%= form.text_field :website_url, id: :service_company_website_url, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :facebook_url %>
+        <%= form.text_field :facebook_url, id: :service_company_facebook_url, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :other_details %>
+        <%= form.text_area :other_details, id: :service_company_other_details, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.check_box :publish, id: :service_company_publish, class: 'form-control' %>
+        <%= form.label :publish %>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <%= link_to 'Back', admin_service_companies_path, class:'btn btn-default' %>
+      <%= form.submit 'Save', :class => 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :service_company_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :service_company_description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

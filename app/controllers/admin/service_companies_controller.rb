@@ -18,36 +18,24 @@ module Admin
 
     def create
       @service_company = ServiceCompany.new(service_company_params)
-
-      respond_to do |format|
-        if @service_company.save
-          format.html { redirect_to [:admin, @service_company], notice: 'Service company was successfully created.' }
-          format.json { render :show, status: :created, location: @service_company }
-        else
-          format.html { render :new }
-          format.json { render json: @service_company.errors, status: :unprocessable_entity }
-        end
+      if @service_company.save
+         redirect_to admin_service_companies_url, notice: 'Service company "'+@service_company.name+'" was successfully created.'
+      else
+         render :new
       end
     end
 
     def update
-      respond_to do |format|
         if @service_company.update(service_company_params)
-          format.html { redirect_to [:admin, @service_company], notice: 'Service company was successfully updated.' }
-          format.json { render :show, status: :ok, location: @service_company }
+          redirect_to admin_service_companies_url, notice: 'Service company "'+@service_company.name+'" was successfully updated.'
         else
-          format.html { render :edit }
-          format.json { render json: @service_company.errors, status: :unprocessable_entity }
+          render :edit
         end
-      end
     end
 
     def destroy
       @service_company.destroy
-      respond_to do |format|
-        format.html { redirect_to admin_service_companies_url, notice: 'Service company was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      redirect_to admin_service_companies_url, notice: 'Service company "'+@service_company.name+'" was successfully destroyed.'
     end
 
     private
@@ -58,7 +46,7 @@ module Admin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_company_params
-      params.require(:service_company).permit(:name, :description)
+      params.require(:service_company).permit(:name, :description, :address, :phone, :website_url, :facebook_url, :other_details, :publish)
     end
   end
 end
