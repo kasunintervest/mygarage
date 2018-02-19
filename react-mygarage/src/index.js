@@ -10,6 +10,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './rootReducer';
 import {userLoggedIn} from "./actions/auth";
+import setAuthorizationHeader from './utils/setAuthorizationHeader';
 
 const store = createStore(
     rootReducer,
@@ -22,6 +23,8 @@ if(localStorage.mygarageJWT){
         email: localStorage.email,
     }
     store.dispatch(userLoggedIn(user));
+
+    setAuthorizationHeader(localStorage.mygarageJWT);
 }
 
 
