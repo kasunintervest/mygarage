@@ -1,0 +1,58 @@
+import React from 'react';
+import PropTypes from "prop-types";
+import {connect} from 'react-redux'
+import { fetchVehicles } from "../../actions/vehicles";
+import {allVehiclesSelector} from '../../reducers/vehicles';
+
+class MyVehiclesPage extends React.Component {
+
+    /*componentDidMount = () => this.onInit(this.props);
+
+    onInit = (props) => props.fetchVehicles();*/
+
+    componentWillMount() {
+        this.props.fetchVehicles();
+    }
+
+
+    renderPosts(vehicles) {
+        return vehicles.map((vehicle) => {
+            return (
+                <li className="list-group-item" key={vehicle._id}>
+                        <h3 className="list-group-item-heading">{vehicle.name}</h3>
+                </li>
+            );
+        });
+    }
+
+    render(){
+
+        const { vehicles } = this.props;
+
+        return (
+            <div>
+
+                {console.log(vehicles)}}
+
+            </div>
+        );
+
+    }
+}
+
+MyVehiclesPage.propTypes = {
+    fetchVehicles: PropTypes.func.isRequired,
+    vehicles: PropTypes.shape({
+        undefined: PropTypes.string.isRequired
+    }).isRequired
+}
+
+function mapStateToProps(state) {
+    return {
+        vehicles: allVehiclesSelector(state)
+    };
+}
+
+
+
+export default connect(mapStateToProps, { fetchVehicles })(MyVehiclesPage);

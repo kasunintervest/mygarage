@@ -4,22 +4,20 @@ import api from "../api";
 import { vehicleSchema } from "../schemas";
 
 // data.entities.books
-/*const booksFetched = data => ({
+const vehiclesFetched = data => ({
     type: VEHICLES_FETCHED,
     data
-});*/
+});
 
 const vehicleCreated = data => ({
     type: VEHICLE_CREATED,
     data
 });
 
-/*
-export const fetchBooks = () => dispatch =>
-    api.books
+export const fetchVehicles = () => dispatch =>
+    api.vehicles
         .fetchAll()
-        .then(books => dispatch(booksFetched(normalize(books, [bookSchema]))));
-*/
+        .then(vehicles => dispatch(vehiclesFetched(normalize(vehicles, [vehicleSchema]))));
 
 export const createVehicle = data => dispatch =>
     api.vehicles

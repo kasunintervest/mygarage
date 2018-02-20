@@ -6,6 +6,7 @@ import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import DashboardPage from './components/pages/DashboardPage';
 import NewVehiclePage from './components/pages/NewVehiclePage';
+import MyVehiclesPage from './components/pages/MyVehiclesPage';
 import SignupPage from './components/pages/SignupPage';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
@@ -19,6 +20,7 @@ const App = ({location , isAuthenticated}) => (
         <GuestRoute  location={location} path="/signup" exact component={SignupPage}/>
         <UserRoute  location={location} path="/dashboard" exact component={DashboardPage}/>
         <UserRoute  location={location} path="/vehicles/new" exact component={NewVehiclePage}/>
+        <UserRoute  location={location} path="/vehicles/list" exact component={MyVehiclesPage}/>
     </div>
 );
 
