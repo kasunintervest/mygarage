@@ -1,11 +1,12 @@
 import {createSelector} from 'reselect';
-import { VEHICLES_FETCHED, VEHICLE_CREATED } from "../types";
+import {VEHICLES_FETCHED, VEHICLE_CREATED} from "../types";
 
 export default function vehicles(state = {}, action = {}) {
-    switch (action.type){
+    switch (action.type) {
         case VEHICLES_FETCHED:
+            return {...state, ...action.data.entities.vehicles};
         case VEHICLE_CREATED:
-            return { ...state, ...action.data.entities.vehicles };
+            return {...state, ...action.data.entities.vehicles};
         default:
             return state;
     }
@@ -14,6 +15,6 @@ export default function vehicles(state = {}, action = {}) {
 
 //SELECTORS
 export const vehicleSelector = state => state.vehicles;
-export const allVehiclesSelector = createSelector(vehicleSelector,vehicleHash =>
+export const allVehiclesSelector = createSelector(vehicleSelector, vehicleHash =>
     Object.values(vehicleHash)
 );

@@ -13,7 +13,7 @@ class NewVehiclePage extends React.Component {
 
     addVehicle = vehicle => this.props
         .createVehicle(vehicle)
-        .then(() => this.props.history.push("/dashboard"));
+        .then(() => this.props.history.push("/vehicles/list"));
 
     render(){
         return (
