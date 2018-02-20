@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       devise_for :users, skip: [:sessions], :controllers => { registrations: 'registrations' }
       resources :sessions, only: [:create, :destroy]
-      resources :vehicles, only: [:index, :create, :destroy, :update, :show]
+      resources :vehicles, only: [:index, :create, :destroy, :update, :show] do
+        resources :service_records, only: [:index, :create, :destroy, :update, :show]
+      end
       resources :service_companies, only: [:index]
       resources :service_types, only: [:index]
     end

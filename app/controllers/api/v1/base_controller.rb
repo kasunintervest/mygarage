@@ -33,4 +33,13 @@ class Api::V1::BaseController < ApplicationController
   def render_unprocessable_entity_response(exception)
     render json: exception.record.errors, status: :unprocessable_entity
   end
+
+  def is_owner(vehicle)
+    if vehicle.user_id != current_user.id
+      head(:unauthorized)
+      false
+    else
+      true
+    end
+  end
 end

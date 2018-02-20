@@ -1,13 +1,13 @@
 class CreateServiceRecords < ActiveRecord::Migration[5.1]
   def change
     create_table :service_records do |t|
-      t.references :vehicles, index: true, foreign_key: true
+      t.references :vehicle, index: true, foreign_key: true
       t.references :service_company, index: true, foreign_key: true
-      t.string :service_type
-      t.string :service_date
+      t.references :service_type, index: true, foreign_key: true
+      t.date :service_date
       t.string :details
-      t.string :mileage
-      t.string :cost
+      t.integer :mileage
+      t.decimal :cost, :precision => 10, :scale => 2
 
       t.timestamps
     end
