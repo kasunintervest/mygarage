@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180216093524) do
+ActiveRecord::Schema.define(version: 20180219102935) do
 
   create_table "pictures", force: :cascade do |t|
     t.integer "vehicle_id"
@@ -44,6 +44,28 @@ ActiveRecord::Schema.define(version: 20180216093524) do
     t.string "facebook_url"
     t.text "other_details"
     t.boolean "publish", default: false
+  end
+
+  create_table "service_records", force: :cascade do |t|
+    t.integer "vehicles_id"
+    t.integer "service_company_id"
+    t.string "service_type"
+    t.string "service_date"
+    t.string "details"
+    t.string "mileage"
+    t.string "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_company_id"], name: "index_service_records_on_service_company_id"
+    t.index ["vehicles_id"], name: "index_service_records_on_vehicles_id"
+  end
+
+  create_table "service_types", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "publish", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

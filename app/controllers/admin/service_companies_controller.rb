@@ -3,7 +3,7 @@ module Admin
     before_action :set_service_company, only: [:show, :edit, :update, :destroy]
 
     def index
-      @service_companies = ServiceCompany.all
+      @service_companies = ServiceCompany.paginate(:page => params[:page])
     end
 
     def show
