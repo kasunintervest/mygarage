@@ -23,5 +23,5 @@ export const createVehicle = data => dispatch =>
     api.vehicles
         .create(data)
         .then(vehicle => dispatch(
-            vehicleCreated(normalize(vehicle, vehicleSchema))
+            vehicleCreated(normalize(vehicle, [vehicleSchema]))
         ));

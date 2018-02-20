@@ -4,12 +4,7 @@ import {VEHICLES_FETCHED, VEHICLE_CREATED} from "../types";
 export default function vehicles(state = {}, action = {}) {
     switch (action.type) {
         case VEHICLES_FETCHED:
-            return {...state,
-
-                ...action.data.entities.vehicles
-
-
-            };
+            return {...state, ...action.data.entities.vehicles};
         case VEHICLE_CREATED:
             return {...state, ...action.data.entities.vehicles};
         default:
