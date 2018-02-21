@@ -9,7 +9,7 @@ export default function VehicleList({ vehicles }) {
 
     const vehicleList = (
         <div className="ui four cards">
-            { vehicles.map(vehicle => <VehicleCard vehicle={vehicle} key={vehicle._id} />) }
+            { vehicles.map(vehicle => <VehicleCard vehicle={vehicle} key={vehicle.id} />) }
         </div>
     );
 

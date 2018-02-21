@@ -11,6 +11,7 @@ import SignupPage from './components/pages/SignupPage';
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
 import TopNavigation from './components/navigation/TopNavigation';
+import VehicleForm from "./Forms/VehicleForm";
 
 const App = ({location , isAuthenticated}) => (
     <div className="ui container">
@@ -21,6 +22,7 @@ const App = ({location , isAuthenticated}) => (
         <UserRoute  location={location} path="/dashboard" exact component={DashboardPage}/>
         <UserRoute  location={location} path="/vehicles/new" exact component={NewVehiclePage}/>
         <UserRoute  location={location} path="/vehicles/list" exact component={MyVehiclesPage}/>
+        <UserRoute  location={location} path="/vehicle/:id" exact component={VehicleForm}/>
     </div>
 );
 

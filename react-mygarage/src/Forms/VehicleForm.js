@@ -2,11 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Form,Button} from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
+import {connect} from 'react-redux'
+import { fetchVehicle } from "../actions/vehicles";
+
 
 class VehicleForm extends React.Component {
 
     state = {
-        data:{},
+        data:{
+            id: this.props.vehicle ? this.props.vehicle.id : '',
+            name: this.props.vehicle ? this.props.vehicle.name : '',
+            registration_number: this.props.vehicle ? this.props.vehicle.registration_number : '',
+            make: this.props.vehicle ? this.props.vehicle.make : '',
+            model: this.props.vehicle ? this.props.vehicle.model : '',
+            year: this.props.vehicle ? this.props.vehicle.year : '',
+            details: this.props.vehicle ? this.props.vehicle.details : '',
+        },
         loading:false,
         errors:{
             name: '',
@@ -17,6 +28,30 @@ class VehicleForm extends React.Component {
         }
     };
 
+    componentWillReceiveProps = (nextProps) => {
+        this.setState({
+            data:{
+                id: nextProps.vehicle.id,
+                name: nextProps.vehicle.name,
+                registration_number: nextProps.vehicle.registration_number,
+                make: nextProps.vehicle.make,
+                model: nextProps.vehicle.model,
+                year: nextProps.vehicle.year,
+                details: nextProps.vehicle.details,
+            },
+            loading:false
+        });
+    }
+
+    componentDidMount() {
+        //if(!!this.props.match.params.id){
+        if(this.props !== undefined && this.props.match !== undefined) {
+            this.setState({
+                loading:true
+            });
+            this.props.fetchVehicle(this.props.match.params.id);
+        }
+    }
 
     onChange = e =>
         this.setState({
@@ -158,7 +193,21 @@ class VehicleForm extends React.Component {
 }
 
 VehicleForm.propTypes={
-    submit: PropTypes.func.isRequired
+    //submit: PropTypes.func.isRequired
 };
 
-export default VehicleForm;
+function mapStateToProps(state,props) {
+
+    if(props.match !== undefined && state.vehicles.id != '') {
+    //if(state.vehicles.id){
+        return {
+            vehicle :  state.vehicles,
+        }
+    }else {
+        return {
+            vehicle : null
+        }
+    }
+}
+
+export default connect(mapStateToProps,{fetchVehicle})(VehicleForm);
