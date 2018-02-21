@@ -1,7 +1,8 @@
 import { normalize } from "normalizr";
-import { VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED , VEHICLE_FETCHED } from "../types";
+import { VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED , VEHICLE_FETCHED , VEHICLE_UPDATED } from "../types";
 import api from "../api";
 import { vehicleSchema } from "../schemas";
+import vehicles from "../reducers/vehicles";
 
 // data.entities.books
 const vehiclesFetched = data => ({
@@ -17,6 +18,11 @@ const vehicleFetched = vehicle => ({
 const vehicleCreated = data => ({
     type: VEHICLE_CREATED,
     data
+});
+
+const vehicleUpdated = vehicle => ({
+    type: VEHICLE_UPDATED,
+    vehicle
 });
 
 const vehicleDeleted = id => ({
@@ -39,6 +45,13 @@ export const createVehicle = data => dispatch =>
         .create(data)
         .then(vehicle => dispatch(
             vehicleCreated(normalize(vehicle, [vehicleSchema]))
+        ));
+
+export const updateVehicle = (id,vehicle) => dispatch =>
+    api.vehicles
+        .update(id,vehicle)
+        .then(vehicle => dispatch(
+            vehicleUpdated(vehicle)
         ));
 
 

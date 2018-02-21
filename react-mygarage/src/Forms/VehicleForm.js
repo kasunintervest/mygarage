@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Form,Button} from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
 import {connect} from 'react-redux'
-import { fetchVehicle } from "../actions/vehicles";
+import { fetchVehicle,updateVehicle } from "../actions/vehicles";
 
 
 class VehicleForm extends React.Component {
@@ -15,6 +15,7 @@ class VehicleForm extends React.Component {
             registration_number: this.props.vehicle ? this.props.vehicle.registration_number : '',
             make: this.props.vehicle ? this.props.vehicle.make : '',
             model: this.props.vehicle ? this.props.vehicle.model : '',
+            colour: this.props.vehicle ? this.props.vehicle.colour : '',
             year: this.props.vehicle ? this.props.vehicle.year : '',
             details: this.props.vehicle ? this.props.vehicle.details : '',
         },
@@ -36,6 +37,7 @@ class VehicleForm extends React.Component {
                 registration_number: nextProps.vehicle.registration_number,
                 make: nextProps.vehicle.make,
                 model: nextProps.vehicle.model,
+                colour: nextProps.vehicle.colour,
                 year: nextProps.vehicle.year,
                 details: nextProps.vehicle.details,
             },
@@ -64,13 +66,25 @@ class VehicleForm extends React.Component {
         e.preventDefault();
         const errors = this.validate(this.state.data);
         this.setState({ errors });
+        this.setState({
+            loading : true
+        });
         if (Object.keys(errors).length === 0) {
             this.setState({ loading: true });
-            this.props
-                .submit(this.state.data)
-                .catch(err =>
-                    this.setState({ errors: !!err.response && !!err.response.data.errors ? err.response.data.errors : {}, loading: false })
-                );
+
+            if(this.state.data.id != '') {
+                this.props
+                    .updateVehicle(this.state.data.id,this.state.data)
+                    .catch(err =>
+                        this.setState({ errors: !!err.response && !!err.response.data.errors ? err.response.data.errors : {}, loading: false })
+                    ).then(()=>this.props.history.push("/vehicles/list"));
+            }else {
+                this.props
+                    .submit(this.state.data)
+                    .catch(err =>
+                        this.setState({ errors: !!err.response && !!err.response.data.errors ? err.response.data.errors : {}, loading: false })
+                    ).then(()=>this.props.history.push("/vehicles/list"));
+            }
         }
     }
 
@@ -108,7 +122,7 @@ class VehicleForm extends React.Component {
                     </Form.Field>}
 
                     <Form.Field error={!!errors.registration_number}>
-                        <label htmlFor="registration_number">Last name</label>
+                        <label htmlFor="registration_number">Registration number</label>
                         <input
                             type="text"
                             id="registration_number"
@@ -210,4 +224,4 @@ function mapStateToProps(state,props) {
     }
 }
 
-export default connect(mapStateToProps,{fetchVehicle})(VehicleForm);
+export default connect(mapStateToProps,{fetchVehicle,updateVehicle})(VehicleForm);
