@@ -13,7 +13,7 @@ class Api::V1::VehiclesController < Api::V1::BaseController
   end
 
   def show
-    respond_with @vehicle.to_json(:methods => [:image])
+    respond_with @vehicle.to_json
   end
 
   def create
@@ -61,7 +61,7 @@ class Api::V1::VehiclesController < Api::V1::BaseController
 
   def render_vehicle(id)
     vehicle = Vehicle.find(id)
-    respond_with vehicle, json: vehicle.to_json(:methods => [:image])
+    respond_with vehicle, json: vehicle.to_json
   end
 
   def vehicle_params

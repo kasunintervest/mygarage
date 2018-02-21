@@ -17,4 +17,14 @@ class Vehicle < ApplicationRecord
   validates :year, presence: true
 
   self.per_page = 10
+
+  def as_json(options={})
+    if options.key?(:only) or options.key?(:methods) or options.key?(:include) or options.key?(:except)
+      super(options)
+    else
+      super(
+          only: [:id, :name, :make, :model, :year, :colour, :registration_number, :details, :created_at, :updated_at ],
+          methods: [:image])
+    end
+  end
 end
