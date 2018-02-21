@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219102935) do
+ActiveRecord::Schema.define(version: 20180220102456) do
 
   create_table "pictures", force: :cascade do |t|
     t.integer "vehicle_id"
@@ -47,17 +47,22 @@ ActiveRecord::Schema.define(version: 20180219102935) do
   end
 
   create_table "service_records", force: :cascade do |t|
-    t.integer "vehicles_id"
+    t.integer "vehicle_id"
     t.integer "service_company_id"
-    t.string "service_type"
-    t.string "service_date"
+    t.integer "service_type_id"
+    t.date "service_date"
     t.string "details"
-    t.string "mileage"
-    t.string "cost"
+    t.integer "mileage"
+    t.decimal "cost", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.index ["service_company_id"], name: "index_service_records_on_service_company_id"
-    t.index ["vehicles_id"], name: "index_service_records_on_vehicles_id"
+    t.index ["service_type_id"], name: "index_service_records_on_service_type_id"
+    t.index ["vehicle_id"], name: "index_service_records_on_vehicle_id"
   end
 
   create_table "service_types", force: :cascade do |t|
