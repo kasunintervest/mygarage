@@ -2,12 +2,14 @@ class Api::V1::VehiclesController < Api::V1::BaseController
   before_action :set_vehicle, only: [:show, :update, :destroy]
 
   def index
+    per_page = params[:per_page].present? ? params[:per_page] : nil
     vehicles = Vehicle
     vehicles = vehicles.where('user_id = :user_id', :user_id => current_user.id)
     vehicles = vehicles.where('name LIKE :name', :name => '%'+params[:search_text]+'%') if params[:search_text]
-    vehicles = vehicles.paginate(:page => params[:page])
+    vehicles = vehicles.paginate(:page => params[:page], :per_page => per_page)
 
-    respond_with :vehicles => vehicles, :current_page => vehicles.current_page, :total_pages => vehicles.total_pages, :total_entries => vehicles.total_entries
+    respond_with :vehicles => vehicles, :current_page => vehicles.current_page, :total_pages => vehicles.total_pages,
+                 :per_page => vehicles.per_page, :total_entries => vehicles.total_entries
   end
 
   def show
