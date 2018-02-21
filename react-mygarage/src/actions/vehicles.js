@@ -1,5 +1,5 @@
 import { normalize } from "normalizr";
-import { VEHICLES_FETCHED, VEHICLE_CREATED } from "../types";
+import { VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED } from "../types";
 import api from "../api";
 import { vehicleSchema } from "../schemas";
 
@@ -14,6 +14,11 @@ const vehicleCreated = data => ({
     data
 });
 
+const vehicleDeleted = id => ({
+    type: VEHICLE_DELETED,
+    id
+});
+
 export const fetchVehicles = () => dispatch =>
     api.vehicles
         .fetchAll()
@@ -25,3 +30,6 @@ export const createVehicle = data => dispatch =>
         .then(vehicle => dispatch(
             vehicleCreated(normalize(vehicle, [vehicleSchema]))
         ));
+
+
+export const deleteVehicle = (id) => dispatch => api.vehicles.delete(id).then(data => vehicleDeleted(id));
