@@ -66,11 +66,10 @@ class VehicleForm extends React.Component {
         e.preventDefault();
         const errors = this.validate(this.state.data);
         this.setState({ errors });
-        this.setState({
+        /*this.setState({
             loading : true
-        });
+        });*/
         if (Object.keys(errors).length === 0) {
-            this.setState({ loading: true });
 
             if(this.state.data.id != '') {
                 this.props
@@ -83,7 +82,7 @@ class VehicleForm extends React.Component {
                     .submit(this.state.data)
                     .catch(err =>
                         this.setState({ errors: !!err.response && !!err.response.data.errors ? err.response.data.errors : {}, loading: false })
-                    ).then(()=>this.props.history.push("/vehicles/list"));
+                    );
             }
         }
     }
