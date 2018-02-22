@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import * as actions from '../../actions/auth';
+import DashboardPage from './DashboardPage';
 
 
 const HomePage = ({isAuthenticated , logout}) => (
   <div>
-
-      <h1>Home Page</h1>
       {
-          isAuthenticated ? <button onClick={()=>logout()}>Logout</button> :  <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
+          isAuthenticated ? <DashboardPage/> :  <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
       }
   </div>
 );
@@ -22,7 +21,7 @@ HomePage.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        isAuthenticated: !!state.user.user_token
+        isAuthenticated: !!state.user.user_token ?  state.user.user_token : false
     }
 }
 

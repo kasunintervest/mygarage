@@ -7,12 +7,17 @@ export default {
             axios.post(
                 'http://localhost:3000/api/v1/sessions',
                credentials,
-            ).then(res => res.data),
+            ).then(user => user.data),
         signup: user =>
             axios.post(
                 'http://localhost:3000/api/v1/users.json',
                 {user},
             ).then(res => res.data),
+        update: (id,user) =>
+            axios.put(
+                'http://localhost:3000/api/v1/users.json',
+                { user,user_email:localStorage.email,user_token:localStorage.mygarageJWT },
+            ).then(res => res.data)
     },
 
     vehicles: {

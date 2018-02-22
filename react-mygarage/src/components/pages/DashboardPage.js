@@ -2,11 +2,13 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 //import {allVehiclesSelector} from '../../reducers/vehicles';
-import AddVehicleCtA from '../../ctas/AddVehicleCtA';
+import DashboardCtA from '../../ctas/DashboardCtA';
+import HomePage from './HomePage';
 
 const DashboardPage = ({vehicles}) => (
     <div>
-        <AddVehicleCtA/>
+        {/*<HomePage/>*/}
+        <DashboardCtA/>
     </div>
 );
 

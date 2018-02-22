@@ -12,7 +12,9 @@ const TopNavigation = ({user , logout}) => (
 
     <br/>
     <div className="ui menu">
-        <Link className="item" as={Link} to="/dashboard">
+
+        <Link className="item" to="/dashboard">
+            <img src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" className="ui avatar image"/>
             Dashboard
         </Link>
         <div className="right menu">
@@ -26,18 +28,17 @@ const TopNavigation = ({user , logout}) => (
                 <div className="ui inline dropdown">
                     <div className="text">
                         <Image avatar src={ gravatarUrl(user.email)}/>
-                        Kalana
+                        {user.first_name}
                     </div>
                     <i className="dropdown icon"></i>
                     <div className="menu">
                         <div className="item">
                             <img className="ui avatar image" src="/images/avatar/small/jenny.jpg"/>
-                                Jenny Hess
                         </div>
                     </div>
                 </div>
             </div>
-            <a class="item">Help</a>
+            <a className="item">Help</a>
             <a className="item" onClick={()=>logout()}>Log Out</a>
         </div>
     </div>
