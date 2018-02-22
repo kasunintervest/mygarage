@@ -13,10 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :admin_users, path: 'admin', path_names: { sign_in: '/', sign_out: 'logout'}
+  devise_for :admin_users, path: 'admin', path_names: { sign_in: '/'}
   namespace :admin do
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     resources :service_companies
     resources :service_types
+    resources :vehicles
   end
 end

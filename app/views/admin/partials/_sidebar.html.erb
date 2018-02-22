@@ -7,12 +7,18 @@
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li class="<%= current_class?(admin_service_companies_path) %>">
-        <a href="/admin/service_companies">
-          <i class="fa fa-home"></i>
-          <span>Service Companies</span>
+      <li class="<%= current_class?(admin_vehicles_path) %>">
+        <a href="/admin/vehicles">
+          <i class="fa fa-car"></i>
+          <span>Vehicles</span>
         </a>
       </li>
+      <li class="<%= current_class?(admin_service_companies_path) %>">
+      <a href="/admin/service_companies">
+        <i class="fa fa-home"></i>
+        <span>Service Companies</span>
+      </a>
+    </li>
       <li class="<%= current_class?(admin_service_types_path) %>">
         <a href="/admin/service_types">
           <i class="fa fa-wrench"></i>
