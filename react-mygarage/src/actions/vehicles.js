@@ -55,4 +55,4 @@ export const updateVehicle = (id,vehicle) => dispatch =>
         ));
 
 
-export const deleteVehicle = (id) => dispatch => api.vehicles.delete(id).then(data => vehicleDeleted(id));
+export const deleteVehicle = (id) => dispatch => api.vehicles.delete(id).then(data => dispatch(vehicleDeleted(id)));

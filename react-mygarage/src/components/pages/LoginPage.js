@@ -12,8 +12,22 @@ class LoginPage extends React.Component {
     render(){
         return (
             <div>
-                <h1>Login Page</h1>
-                <LoginForm submit={this.submit}/>
+                <br/>
+                <div class="ui middle aligned center aligned grid">
+                    <div class="column">
+                        <h2 class="ui teal image header">
+                        <img src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" class="image"/>
+                        <div class="content">
+                            Log-in to your account
+                        </div>
+                        </h2>
+                        <LoginForm submit={this.submit}/>
+
+                        <div class="ui message">
+                            New to us? <a href="/signup">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

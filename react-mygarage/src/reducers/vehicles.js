@@ -13,7 +13,7 @@ export default function vehicles(state = {}, action = {}) {
         case VEHICLE_UPDATED:
             return { ...state, ...action.vehicle}
         case VEHICLE_DELETED:
-            return state.filter(item => item.id !== action.id);
+           return state.undefined.vehicles.filter(item => item.id !== action.id);
         default:
             return state;
     }

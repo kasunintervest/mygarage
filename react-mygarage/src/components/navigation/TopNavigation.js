@@ -8,16 +8,41 @@ import * as actions from '../../actions/auth';
 
 
 const TopNavigation = ({user , logout}) => (
-    <Menu secondary pointing>
-        <Menu.Item as={Link} to="/dashboard">Dashboard</Menu.Item>
-        <Menu.Menu position="right">
-            <Dropdown trigger={<Image avatar src={ gravatarUrl(user.email)}/>}>
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={()=>logout()}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-        </Menu.Menu>
-    </Menu>
+<div>
+
+    <br/>
+    <div className="ui menu">
+        <Link className="item" as={Link} to="/dashboard">
+            Dashboard
+        </Link>
+        <div className="right menu">
+            <div className="item">
+                <div className="ui icon input">
+                    <input placeholder="Search..." type="text"/>
+                        <i className="search link icon"></i>
+                </div>
+            </div>
+            <div className="item">
+                <div className="ui inline dropdown">
+                    <div className="text">
+                        <Image avatar src={ gravatarUrl(user.email)}/>
+                        Kalana
+                    </div>
+                    <i className="dropdown icon"></i>
+                    <div className="menu">
+                        <div className="item">
+                            <img className="ui avatar image" src="/images/avatar/small/jenny.jpg"/>
+                                Jenny Hess
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="item">Help</a>
+            <a className="item" onClick={()=>logout()}>Log Out</a>
+        </div>
+    </div>
+    <br/>
+</div>
 );
 
 TopNavigation.propTypes = {

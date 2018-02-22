@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-export default function VehicleCard({ vehicle }) {
+export default function VehicleCard({ vehicle , deleteVehicle }) {
     return (
         <div className="ui card">
             <div className="image">
@@ -14,9 +14,9 @@ export default function VehicleCard({ vehicle }) {
 
             <div className="extra content">
                 <div className="ui three buttons">
-                    <Link to={`/vehicle/${vehicle.id}`} className="ui basic button blue"><i class="car icon"></i></Link>
-                    <Link to={`/vehicle/${vehicle.id}`} className="ui basic button green"><i class="edit outline icon"></i></Link>
-                    <Link to={'/'} className="ui basic button red"><i class="trash alternate outline icon"></i></Link>
+                    <Link to={`/vehicle/${vehicle.id}`} className="ui basic button blue"><i className="car icon"></i></Link>
+                    <Link to={`/vehicle/${vehicle.id}`} className="ui basic button green"><i className="edit outline icon"></i></Link>
+                    <div onClick={() => deleteVehicle(vehicle.id)} className="ui basic button red"><i className="trash alternate outline icon"></i></div>
                 </div>
             </div>
         </div>
