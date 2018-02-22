@@ -16,6 +16,7 @@ class Api::V1::SessionsController < ApplicationController
           success: true,
           message: 'Successfully logged in',
           user_email: user.email,
+          user_token: user.authentication_token,
           id: user.id,
           first_name: user.first_name,
           last_name: user.last_name
