@@ -7,7 +7,7 @@
   <div style="min-height: 900px" class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Vehicles</h1>
+      <h1>Service Records</h1>
     </section>
 
     <!-- Main content -->
@@ -15,18 +15,21 @@
 
       <%= render 'admin/partials/notices' %>
 
+      <%= render 'admin/service_records/vehicle_details' %>
+
+
       <div class="row">
         <div class="col-xs-12">
           <div class="box box-primary">
             <div class="box-header">
-              <h3 class="box-title"></h3>
+              <h3 class="box-title">Service Records</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
 
                   <div class="input-group-btn">
-                    <%= link_to new_admin_vehicle_path, class: 'btn btn-default' do %>
-                        <i class="fa fa-plus"></i> New Vehicle
+                    <%= link_to new_admin_vehicle_service_record_path, class: 'btn btn-default' do %>
+                        <i class="fa fa-plus"></i> New Service Record
                     <% end %>
                   </div>
                 </div>
@@ -37,35 +40,24 @@
               <table class="table table-hover">
                 <tr>
                   <th>ID</th>
-                  <th>Name</th>
-                  <th>Reg. Number</th>
-                  <th>Make</th>
-                  <th>Model</th>
-                  <th>Year</th>
-                  <th>Image</th>
+                  <th>Service Type</th>
+                  <th>Service Company</th>
+                  <th>Service Date</th>
+                  <th>Mileage</th>
                   <th class="text-center">Action</th>
                 </tr>
-                <% if @vehicles.each do |vehicle| %>
+                <% if @service_records.each do |service_record| %>
                   <tr>
-                    <td style="height: 65px"><%= vehicle.id %></td>
-                    <td><%= link_to vehicle.name, edit_admin_vehicle_path(vehicle) %></td>
-                    <td><%= vehicle.registration_number %></td>
-                    <td><%= vehicle.make %></td>
-                    <td><%= vehicle.model %></td>
-                    <td><%= vehicle.year %></td>
-                    <td>
-                      <% if vehicle.image %>
-                          <%= image_tag vehicle.image[:thumb], :height => 50 %>
-                      <% end %>
-                    </td>
+                    <td><%= service_record.id %></td>
+                    <td><%= link_to service_record.service_type.name, edit_admin_vehicle_service_record_path(@vehicle, service_record) %></td>
+                    <td><%= service_record.service_company.name %></td>
+                    <td><%= service_record.service_date %></td>
+                    <td><%= service_record.mileage %></td>
                     <td class="text-center">
-                      <%= link_to edit_admin_vehicle_path(vehicle), class: 'btn btn-sm', title: 'Edit Vehicle' do %>
+                      <%= link_to edit_admin_vehicle_service_record_path(@vehicle, service_record), class: 'btn btn-sm' do %>
                           <i class="fa fa-edit"></i>
                       <% end %>
-                      <%= link_to admin_vehicle_service_records_path(vehicle), class: 'btn btn-sm', title: 'Service Records' do %>
-                          <i class="fa fa-wrench"></i>
-                      <% end %>
-                      <%= link_to admin_vehicle_path(vehicle), title: 'Delete', class: 'btn btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <%= link_to admin_vehicle_service_record_path(@vehicle, service_record), class: 'btn btn-sm', method: :delete, data: { confirm: 'Are you sure?' } do %>
                           <i class="fa fa-remove"></i>
                       <% end %>
                     </td>
@@ -79,7 +71,7 @@
             <!-- /.box-body -->
 
             <div class="pull-right">
-              <%= will_paginate @vehicles %>
+              <%= will_paginate @service_records %>
             </div>
 
           </div>

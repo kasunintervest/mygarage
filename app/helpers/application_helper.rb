@@ -4,6 +4,12 @@ module ApplicationHelper
     ''
   end
 
+  def set_active_class(resource)
+    segments = request.path.split('/')
+    return 'active' if segments[2] == resource
+    ''
+  end
+
   def is_page?(path)
     if request.path == path
       true

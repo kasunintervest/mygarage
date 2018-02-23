@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index', as: 'dashboard'
     resources :service_companies
     resources :service_types
-    resources :vehicles
+    resources :vehicles do
+      resources :service_records
+    end
   end
 end

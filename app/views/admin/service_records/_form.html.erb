@@ -1,0 +1,60 @@
+<div class="box box-primary">
+
+  <!-- form start -->
+  <%= form_with(model: [:admin, @vehicle, service_record], local: true) do |form| %>
+
+      <% if service_record.errors.any? %>
+          <div class="alert alert-danger alert-dismissible">
+            <h4><%= pluralize(service_record.errors.count, 'error') %> prohibited this service type from being saved:</h4>
+
+            <ul>
+              <% service_record.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div class="box-header">
+        <h3 class="box-title">Service Record</h3>
+      </div>
+    <div class="box-body">
+      <div class="form-group">
+        <%= form.label :service_type_id %>
+        <%= form.select('service_type_id', ServiceType.where(publish: true).collect {|r| [h(r.name), r.id] }, { :include_blank => '- Please select -' }, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= form.label :service_company_id %>
+        <%= form.select('service_company_id', ServiceCompany.where(publish: true).collect {|r| [h(r.name), r.id] }, { :include_blank => '- Please select -' }, class: 'form-control') %>
+      </div>
+      <div class="form-group">
+        <%= form.label :service_date %>
+        <%= form.text_field :service_date, id: :service_record_service_date, class: 'datepicker form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :details %>
+        <%= form.text_area :details, id: :service_record_details, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :mileage %>
+        <%= form.text_field :mileage, id: :service_record_mileage, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :cost %>
+        <%= form.text_field :cost, id: :service_record_cost, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= form.label :attachment %>
+        <%= form.file_field :attachment, class: 'form-control' %>
+        <% if @service_record.attachment_url %>
+            <%= link_to image_tag(@service_record.attachment_url[:thumb]), @service_record.attachment_url[:original] %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <%= link_to 'Back', admin_vehicle_service_records_path, class:'btn btn-default' %>
+      <%= form.submit 'Save', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

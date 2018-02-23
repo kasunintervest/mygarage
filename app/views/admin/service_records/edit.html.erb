@@ -7,16 +7,16 @@
   <div style="min-height: 900px" class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Editing Vehicle
-        <span class="pull-right" style="font-size: 16px"><%= link_to 'View Service Records', admin_vehicle_service_records_path(@vehicle) %></span>
-      </h1>
+      <h1>Editing Service Record</h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <%= render 'admin/partials/notices' %>
 
-      <%= render 'form', vehicle: @vehicle %>
+      <%= render 'admin/service_records/vehicle_details' %>
+
+      <%= render 'form', service_record: @service_record %>
     </section>
     <!-- /.content -->
   </div>
