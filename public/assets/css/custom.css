@@ -1,0 +1,7 @@
+.pagination a, .pagination span, .pagination em{
+    background-color: #fff;
+    padding: 2px 8px;
+}
+.pagination em{
+    font-weight: bold;
+}
