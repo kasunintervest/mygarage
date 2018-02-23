@@ -12,9 +12,10 @@ import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
 import TopNavigation from './components/navigation/TopNavigation';
 import VehicleForm from "./Forms/VehicleForm";
+import UserProfilePage from "./components/pages/UserProfilePage";
 
 const App = ({location , isAuthenticated}) => (
-    <div className="ui container">
+    <div>
         {isAuthenticated && <TopNavigation />}
         <Route location={location} path="/" exact component={HomePage}/>
         <GuestRoute  location={location} path="/login" exact component={LoginPage}/>
@@ -23,6 +24,7 @@ const App = ({location , isAuthenticated}) => (
         <UserRoute  location={location} path="/vehicles/new" exact component={NewVehiclePage}/>
         <UserRoute  location={location} path="/vehicles/list" exact component={MyVehiclesPage}/>
         <UserRoute  location={location} path="/vehicle/:id" exact component={VehicleForm}/>
+        <UserRoute  location={location} path="/profile/:id" exact component={UserProfilePage}/>
     </div>
 );
 
@@ -35,6 +37,17 @@ App.propTypes = {
 }
 
 function mapStateToProps(state) {
+
+    if(!!state.user.email == false && !!state.user.user_email == true) {
+        state.user.email = state.user.user_email;
+    }
+
+    if(!!state.user.user_token == false && !!state.user.authentication_token == true) {
+        state.user.user_token = state.user.authentication_token;
+    }
+
+
+
     return {
         isAuthenticated: !!state.user.email
     }

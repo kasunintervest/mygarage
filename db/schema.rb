@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20180220102456) do
   end
 
   create_table "service_records", force: :cascade do |t|
-    t.integer "vehicles_id"
+    t.integer "vehicle_id"
     t.integer "service_company_id"
     t.string "service_type"
     t.string "service_date"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180220102456) do
     t.integer "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.index ["service_company_id"], name: "index_service_records_on_service_company_id"
-    t.index ["vehicles_id"], name: "index_service_records_on_vehicles_id"
+    t.index ["vehicle_id"], name: "index_service_records_on_vehicles_id"
   end
 
   create_table "service_types", force: :cascade do |t|

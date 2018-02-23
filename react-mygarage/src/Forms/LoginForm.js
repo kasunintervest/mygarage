@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
 
     onSubmit = e =>{
         const errors = this.validate(this.state.data);
-        this.setState({errors});
+        this.setState({errors,loading:true});
         var e = this;
 
         if(Object.keys(errors).length === 0){
@@ -34,6 +34,8 @@ class LoginForm extends React.Component {
                     }
                 }
             );
+        }else {
+            this.setState({loading:false});
         }
     }
 
@@ -50,36 +52,52 @@ class LoginForm extends React.Component {
         const {data , errors , loading} = this.state;
 
         return (
-            <Form onSubmit={this.onSubmit} loading={loading}>
-                {errors[0] && <Message negative>
-                    <Message.Header>Something went wrong!</Message.Header>
-                    <p>{errors}</p>
-                </Message>}
-                <Form.Field error={!!errors.user_email}>
-                    <label htmlFor="user_email">Email</label>
-                    <input
-                        type="email"
-                        id="user_email"
-                        name="user_email"
-                        placeholder="example@example.com"
-                        value={data.user_email}
-                        onChange={this.onChange}
-                    />
+            <Form onSubmit={this.onSubmit} loading={loading} className="ui large form">
+
+                {/*<div class="ui stacked segment">*/}
+
+                    {errors[0] && <Message negative><Message.Header>Something went wrong!</Message.Header><p>{errors}</p></Message>}
+
+                    <div className={ `field ${errors.user_email && 'error'} `}>
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+
+                        <input
+                            type="email"
+                            id="user_email"
+                            name="user_email"
+                            placeholder="E-mail address"
+                            value={data.user_email}
+                            onChange={this.onChange}/>
+
+                        </div>
+                        {/*{errors.user_email &&  <Message negative>
+                            <Message.Header>{errors.user_email}</Message.Header>
+                        </Message>}*/}
+                    </div>
+
+                    <div className={ `field ${errors.password && 'error'} `}>
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Make it secure"
+                                value={data.password}
+                                onChange={this.onChange}/>
+                            </div>
+                            {/*{errors.password &&  <Message negative>
+                                <Message.Header>{errors.password}</Message.Header>
+                            </Message>}*/}
+                    </div>
+                    <button class="ui fluid large teal submit button">Login</button>
+                {/*</div>*/}
+                {/*<div class="ui error message">
                     {errors.user_email && <InlineError text={errors.user_email}/>}
-                </Form.Field>
-                <Form.Field error={!!errors.password}>
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder="Make it secure"
-                        value={data.password}
-                        onChange={this.onChange}
-                    />
                     {errors.password && <InlineError text={errors.password}/>}
-                </Form.Field>
-                <Button primary>Login</Button>
+                </div>*/}
             </Form>
         );
     }

@@ -3,27 +3,34 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LoginForm from '../../Forms/LoginForm';
 import {login} from '../../actions/auth';
+import LoginPageJs from '../../js/LoginPageJs.js';
+import LoginPageCss from '../../styles/loginPage.css';
 
 class LoginPage extends React.Component {
 
+
     submit = data =>
-        this.props.login(data).then(()=>this.props.history.push("/"));
+        this.props.login(data).then(()=>this.props.history.push("/dashboard"));
 
     render(){
         return (
-            <div>
+            <div >
                 <br/>
                 <div class="ui middle aligned center aligned grid">
-                    <div class="column">
-                        <h2 class="ui teal image header">
-                        <img src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" class="image"/>
-                        <div class="content">
-                            Log-in to your account
-                        </div>
+                    <div className="column">
+                        <h2 className="ui teal image header">
+                            <img src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" class="image"/>
+                            <div className="content">
+                                Log-in to your account
+                            </div>
                         </h2>
-                        <LoginForm submit={this.submit}/>
+                        <div className="ui middle aligned center aligned grid">
+                            <div className="column">
+                                <LoginForm submit={this.submit}/>
+                            </div>
+                        </div>
 
-                        <div class="ui message">
+                        <div className="ui message">
                             New to us? <a href="/signup">Sign Up</a>
                         </div>
                     </div>

@@ -29,7 +29,7 @@ class SignupForm extends React.Component {
     onSubmit = e =>{
         e.preventDefault();
         const errors = this.validate(this.state.data);
-        this.setState({errors});
+        this.setState({errors,loading:true});
         var eVent = this;
 
         if(Object.keys(errors).length === 0){
@@ -37,6 +37,8 @@ class SignupForm extends React.Component {
             this.props.submit(this.state.data).catch(function (err) {
                     eVent.setState({errors: err.response.data.errors,loading:false})
             });
+        }else {
+            this.setState({loading:false});
         }
     }
 
@@ -57,42 +59,43 @@ class SignupForm extends React.Component {
 
         return (
             <div>
+
                 <Form onSubmit={this.onSubmit} loading={loading}>
 
                     <Form.Field error={!!errors.first_name}>
-                        <label htmlFor="first_name">First name</label>
+                        {/*<label htmlFor="first_name">First name</label>*/}
                         <input
                             type="text"
                             id="first_name"
                             name="first_name"
-                            placeholder="John"
+                            placeholder="First name"
                             value={data.first_name}
                             onChange={this.onChange}
                         />
-                        {errors.first_name && <InlineError text={errors.first_name}/>}
+                        {/*{errors.first_name && <InlineError text={errors.first_name}/>}*/}
                     </Form.Field>
 
                     <Form.Field error={!!errors.last_name}>
-                        <label htmlFor="last_name">Last name</label>
+                        {/*<label htmlFor="last_name">Last name</label>*/}
                         <input
                             type="text"
                             id="last_name"
                             name="last_name"
-                            placeholder="Deer"
+                            placeholder="Last name"
                             value={data.last_name}
                             onChange={this.onChange}
                         />
-                        {errors.last_name && <InlineError text={errors.last_name}/>}
+                        {/*{errors.last_name && <InlineError text={errors.last_name}/>}*/}
                     </Form.Field>
 
 
                     <Form.Field error={!!errors.email}>
-                        <label htmlFor="email">Email</label>
+                        {/*<label htmlFor="email">Email</label>*/}
                         <input
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="example@example.com"
+                            placeholder="Email"
                             value={data.email}
                             onChange={this.onChange}
                         />
@@ -100,7 +103,7 @@ class SignupForm extends React.Component {
                     </Form.Field>
 
                     <Form.Field error={!!errors.password}>
-                        <label htmlFor="password">Password</label>
+                        {/*<label htmlFor="password">Password</label>*/}
                         <input
                             type="password"
                             id="password"
@@ -111,7 +114,8 @@ class SignupForm extends React.Component {
                         />
                         {errors.password && <InlineError text={errors.password}/>}
                     </Form.Field>
-                    <Button primary>Sign Up</Button>
+                    <button class="ui fluid large teal submit button">Sign Up</button>
+
                 </Form>
             </div>
         );
