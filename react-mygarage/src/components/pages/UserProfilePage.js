@@ -9,6 +9,7 @@ class UserProfilePage extends React.Component {
 
     state = {
         data:{
+            email: this.props.user ? this.props.user.email : '',
             first_name: this.props.user ? this.props.user.first_name : '',
             last_name: this.props.user ? this.props.user.last_name : '',
         },
@@ -61,7 +62,7 @@ class UserProfilePage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="ui  container left floated" >
                 <h1>Edit My Profile</h1>
                 <UserProfileEditForm errors={this.state.errors } user={ this.state.data  }  updateUser={this.props.updateUser} onChange={this.onChange} loading={this.state.loading} onSubmit={this.onSubmit}/>
             </div>

@@ -200,6 +200,7 @@ class VehicleForm extends React.Component {
                     </Form.Field>
                     <Button primary>Save</Button>
                 </Form>
+                <br/>
             </div>
         );
     }

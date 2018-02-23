@@ -17,9 +17,11 @@ class MyVehiclesPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>My vehicle List</h1>
-                { this.props.vehicles.length >=1 && <VehicleList vehicles={ !!this.props.vehicles[0].vehicles ? this.props.vehicles[0].vehicles : this.props.vehicles  }  deleteVehicle={this.props.deleteVehicle}/>}
+            <div className="ui container left" >
+                <h1>My vehicles</h1>
+                <div className="ui container centered" >
+                    { this.props.vehicles.length >=1 && <VehicleList vehicles={ !!this.props.vehicles[0].vehicles ? this.props.vehicles[0].vehicles : this.props.vehicles  }  deleteVehicle={this.props.deleteVehicle}/>}
+                </div>
             </div>
         );
     }

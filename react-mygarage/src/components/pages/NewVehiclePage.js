@@ -17,10 +17,12 @@ class NewVehiclePage extends React.Component {
 
     render(){
         return (
-            <Segment>
+            <div className="ui  container left floated" >
                 <h1>Add new vehicle</h1>
-                <VehicleForm submit={this.addVehicle}/>
-            </Segment>
+                <div className="ui container left floated" >
+                    <VehicleForm submit={this.addVehicle}/>
+                </div>
+            </div>
         );
     }
 }

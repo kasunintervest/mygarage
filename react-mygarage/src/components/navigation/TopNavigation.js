@@ -30,7 +30,7 @@ const TopNavigation = ({user , logout}) => (
                         <Image avatar src={ gravatarUrl(user.email)}/>
                         {user.first_name}
                     </div>
-                    <i className="dropdown icon"></i>
+                    {/*<i className="dropdown icon"></i>*/}
                     <div className="menu">
                         <div className="item">
                             <img className="ui avatar image" src="/images/avatar/small/jenny.jpg"/>

@@ -10,9 +10,10 @@ export default function UserProfileEditForm({ onSubmit,loading, user  , errors ,
             <div>
                 <Form onSubmit={onSubmit} loading={loading}>
 
+                    {console.log(user)}
                     <Form.Field>
                         <label htmlFor="name">E-mail</label>
-                        <label htmlFor="name" className="ui label grey">{user.email || ''}</label>
+                        <label htmlFor="name" className="ui label grey">{user.email || 'No email'}</label>
                     </Form.Field>
 
                     <Form.Field error={!!errors.first_name}>
