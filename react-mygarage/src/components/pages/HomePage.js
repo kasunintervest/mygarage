@@ -4,12 +4,13 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import * as actions from '../../actions/auth';
 import DashboardPage from './DashboardPage';
+import MainIndexPage from './MainIndexPage';
 
 
 const HomePage = ({isAuthenticated , logout}) => (
   <div>
       {
-          isAuthenticated ? <DashboardPage/> :  <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
+          isAuthenticated ? <DashboardPage/> :  <MainIndexPage/>/*<div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>*/
       }
   </div>
 );
@@ -20,6 +21,8 @@ HomePage.propTypes = {
 }
 
 function mapStateToProps(state) {
+
+    console.log(state.user);
     return {
         isAuthenticated: !!state.user.user_token ?  state.user.user_token : false
     }
