@@ -1,16 +1,50 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Admin</b>MG</a>
   </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Forgot your password?</p>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= form_for(resource, as: resource_name, url: '/admin/password', html: { method: :post }) do |f| %>
+
+        <%= devise_error_messages! %>
+
+        <div class="form-group has-feedback">
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class:'form-control', placeholder: 'Email' %>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-flat">Send me reset password instructions</button>
+          </div>
+          <!-- /.col -->
+        </div>
+    <% end %>
+
+    <br>
+    <%= render "admin_users/shared/links" %>
   </div>
-<% end %>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
 
-<%= render "admin_users/shared/links" %>
+<style>
+  #error_explanation h2 {
+    display: none;
+  }
+  #error_explanation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #error_explanation ul li {
+    color: #fff;
+    background: #dd4b39 !important;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+  }
+</style>

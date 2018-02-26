@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     resources :vehicles do
       resources :service_records
     end
+    resources :users
   end
 end

@@ -1,0 +1,26 @@
+<div class="wrapper">
+
+  <%= render 'admin/partials/header' %>
+
+  <%= render 'admin/partials/sidebar' %>
+
+  <div style="min-height: 900px" class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Editing User</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <%= render 'admin/partials/notices' %>
+
+      <%= render 'form', user: @user %>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <%= render 'admin/partials/footer' %>
+
+</div>
+<!-- ./wrapper -->
