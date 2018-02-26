@@ -9,12 +9,4 @@ module ApplicationHelper
     return 'active' if segments[2] == resource
     ''
   end
-
-  def is_page?(path)
-    if request.path == path
-      true
-    else
-      false
-    end
-  end
 end
