@@ -12,13 +12,11 @@ import rootReducer from './rootReducer';
 import {userLoggedIn} from "./actions/auth";
 import setAuthorizationHeader from './utils/setAuthorizationHeader';
 
-
 const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(thunk))
 );
 
-console.log(!!localStorage.mygarageJWT);
 
 if(localStorage.mygarageJWT){
     const user = {

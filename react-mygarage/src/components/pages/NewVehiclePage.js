@@ -17,7 +17,7 @@ class NewVehiclePage extends React.Component {
 
     render(){
         return (
-            <div className="ui  container left floated" >
+            <div className="ui container left floated" >
                 <h1>Add new vehicle</h1>
                 <div className="ui container left floated" >
                     <VehicleForm submit={this.addVehicle}/>

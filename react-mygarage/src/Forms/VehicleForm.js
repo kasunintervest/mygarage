@@ -66,9 +66,9 @@ class VehicleForm extends React.Component {
         e.preventDefault();
         const errors = this.validate(this.state.data);
         this.setState({ errors });
-        /*this.setState({
+        this.setState({
             loading : true
-        });*/
+        });
         if (Object.keys(errors).length === 0) {
 
             if(this.state.data.id != '') {
@@ -84,6 +84,10 @@ class VehicleForm extends React.Component {
                         this.setState({ errors: !!err.response && !!err.response.data.errors ? err.response.data.errors : {}, loading: false })
                     );
             }
+        }else {
+            this.setState({
+                loading : false
+            });
         }
     }
 
@@ -104,7 +108,9 @@ class VehicleForm extends React.Component {
         const {data , errors , loading} = this.state;
 
         return (
-            <div>
+            <div className="ui container left floated" >
+
+                {this.state.data.id != '' && <h1>Edit vehicle</h1>}
                 <Form onSubmit={this.onSubmit} loading={loading}>
 
                     {<Form.Field error={!!errors.name}>
