@@ -30,3 +30,6 @@ yarn-error.log*
 .yarn-integrity
 /public/system/*
 /Gemfile.lock
+
+# Ignore application configuration
+/config/application.yml

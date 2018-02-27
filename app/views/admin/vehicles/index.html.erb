@@ -42,7 +42,6 @@
                   <th>Make</th>
                   <th>Model</th>
                   <th>Year</th>
-                  <th>Image</th>
                   <th class="text-center">Action</th>
                 </tr>
                 <% if @vehicles.each do |vehicle| %>
@@ -53,11 +52,6 @@
                     <td><%= vehicle.make %></td>
                     <td><%= vehicle.model %></td>
                     <td><%= vehicle.year %></td>
-                    <td>
-                      <% if vehicle.image %>
-                          <%= image_tag vehicle.image[:thumb], :height => 50 %>
-                      <% end %>
-                    </td>
                     <td class="text-center">
                       <%= link_to edit_admin_vehicle_path(vehicle), class: 'btn btn-sm', title: 'Edit Vehicle' do %>
                           <i class="fa fa-edit"></i>
