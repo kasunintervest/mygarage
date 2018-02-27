@@ -19,7 +19,9 @@ class LoginPage extends React.Component {
                 <div class="ui middle aligned center aligned grid">
                     <div className="column">
                         <h2 className="ui teal image header">
+                            <a href="/">
                             <img src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" class="image"/>
+                            </a>
                             <div className="content">
                                 Log-in to your account
                             </div>

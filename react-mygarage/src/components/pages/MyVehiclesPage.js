@@ -8,7 +8,7 @@ import {allVehiclesSelector} from '../../reducers/vehicles';
 class MyVehiclesPage extends React.Component {
 
     componentWillReceiveProps = (nextProps) => {
-        this.vehicles = nextProps.vehicles[0];
+        this.vehicles = nextProps.vehicles;
     }
 
     componentDidMount() {

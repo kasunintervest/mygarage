@@ -1,5 +1,7 @@
 import {createSelector} from 'reselect';
 import {VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED , VEHICLE_FETCHED ,VEHICLE_UPDATED} from "../types";
+import { fetchVehicles  } from "../../src/actions/vehicles";
+
 
 export default function vehicles(state = {}, action = {}) {
     switch (action.type) {
@@ -13,7 +15,11 @@ export default function vehicles(state = {}, action = {}) {
         case VEHICLE_UPDATED:
             return { ...state, ...action.vehicle}
         case VEHICLE_DELETED:
-           return state.undefined.vehicles.filter(item => item.id !== action.id);
+            if(state.undefined){
+                return state.undefined.vehicles.filter(item => item.id !== action.id);
+            }else {
+                return state.filter(item => item.id !== action.id);
+            }
         default:
             return state;
     }

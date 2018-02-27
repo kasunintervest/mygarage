@@ -1,6 +1,6 @@
 import axios from 'axios';
 import axiosClient from '../src/axiosClient';
-
+const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 export default {
     user: {
         login: (credentials) =>
@@ -24,7 +24,7 @@ export default {
         fetchAll: () => axiosClient.get("http://localhost:3000/api/v1/vehicles.json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,).then(res => res),
         fetch: (id) => axiosClient.get("http://localhost:3000/api/v1/vehicles/"+id+".json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,).then(res => res),
         create: vehicle => axiosClient.post("/api/v1/vehicles.json", { vehicle,user_email:localStorage.email,user_token:localStorage.mygarageJWT  }).then(res => res.data),
-        update: (id,vehicle) => axiosClient.put("/api/v1/vehicles/"+id+".json", { vehicle,user_email:localStorage.email,user_token:localStorage.mygarageJWT  }).then(res => res.data),
+        update: (id,vehicle) => axiosClient.put("/api/v1/vehicles/"+id+".json", { vehicle,user_email:localStorage.email,user_token:localStorage.mygarageJWT  },config).then(res => res.data),
         delete:(id) =>axiosClient.delete("/api/v1/vehicles/"+id+".json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,{ user_email:localStorage.email,user_token:localStorage.mygarageJWT  }).then(res => res.data)
     }
 };

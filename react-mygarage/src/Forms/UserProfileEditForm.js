@@ -42,7 +42,7 @@ export default function UserProfileEditForm({ onSubmit,loading, user  , errors ,
                         {errors.last_name && <InlineError text={errors.last_name}/>}
                     </Form.Field>
 
-                    <Button primary>Save</Button>
+                    <Button primary>{loading ? 'Saving...' : 'Save'}</Button>
                 </Form>
             </div>
         </div>
