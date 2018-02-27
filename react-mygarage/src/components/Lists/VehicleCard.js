@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 export default function VehicleCard({ vehicle , deleteVehicle }) {
     return (
         <div className="ui card">
-            <div className="image">
-                <img src="http://www.irishnews.com/picturesarchive/irishnews/irishnews/2017/02/08/124412940-e22c77b6-7e20-418a-8cb8-44907fe97bf1.jpg" alt="Game Cover" />
+            <div className="ui image medium">
+                <img src={vehicle.image ?  'http://localhost:3000/'+vehicle.image.medium : "http://www.irishnews.com/picturesarchive/irishnews/irishnews/2017/02/08/124412940-e22c77b6-7e20-418a-8cb8-44907fe97bf1.jpg"} alt="Game Cover" />
             </div>
             <div className="content">
                 <div className="header">{vehicle.registration_number}</div>
