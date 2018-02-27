@@ -64,3 +64,4 @@ gem 'react-rails', '~> 2.4', '>= 2.4.3'
 gem 'webpacker', '~> 3.0'
 
 gem 'rack-cors', :require => 'rack/cors'
+gem 'figaro'
