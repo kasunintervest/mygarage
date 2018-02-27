@@ -3,7 +3,7 @@ module Admin
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
-      @users = User.paginate(:page => params[:page])
+      @users = User.includes(:roles).paginate(:page => params[:page])
     end
 
     def show
@@ -46,7 +46,12 @@ module Admin
     end
 
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :password)
+      if params[:user][:password]
+        params.require(:user).permit(:email, :first_name, :last_name, :password)
+      else
+        params.require(:user).permit(:email, :first_name, :last_name)
+      end
+
     end
 
     def update_role(user, new_role)
