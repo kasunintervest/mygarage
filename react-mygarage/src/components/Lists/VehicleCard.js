@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import DeleteVehicleConformModel from '../models/DeleteVehicleConformModel';
 
 export default function VehicleCard({ vehicle , deleteVehicle }) {
+
     return (
         <div className="ui card">
             <div className="ui image medium">
@@ -13,10 +15,11 @@ export default function VehicleCard({ vehicle , deleteVehicle }) {
             </div>
 
             <div className="extra content">
-                <div className="ui three buttons">
+                <div className="ui four buttons">
                     <Link to={`/vehicle/${vehicle.id}`} className="ui basic button blue"><i className="car icon"></i></Link>
                     <Link to={`/vehicle/${vehicle.id}`} className="ui basic button green"><i className="edit outline icon"></i></Link>
-                    <div onClick={() => deleteVehicle(vehicle.id)} className="ui basic button red"><i className="trash alternate outline icon"></i></div>
+                    {/*<div onClick={() => deleteVehicle(vehicle.id)} className="ui basic button red"><i className="trash alternate outline icon"></i></div>*/}
+                    <DeleteVehicleConformModel deleteVehicleAction={deleteVehicle} veh_id={vehicle.id} veh_reg_no={vehicle.registration_number}/>
                 </div>
             </div>
         </div>

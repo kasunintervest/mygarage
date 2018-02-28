@@ -20,7 +20,7 @@ class MainIndexPage extends React.Component {
     render() {
         return (
             <div>
-                <div className="ui large top fixed hidden menu">
+                <div className="ui large top fixed hidden menu" style={{display:'none'}}>
                     <div className="ui container">
                         <a className="active item">Home</a>
                         <a className="item">Work</a>
@@ -37,18 +37,38 @@ class MainIndexPage extends React.Component {
                     </div>
                 </div>
 
-                <div className="ui vertical inverted sidebar menu">
+                <div className="ui vertical inverted sidebar hidden menu">
                     <a className="active item">Home</a>
                     <a className="item">Work</a>
                     <a className="item">Company</a>
                     <a className="item">Careers</a>
-                    <a className="item">Login</a>
-                    <a className="item">Signup</a>
+                    <div className="item">
+                        <Link className="ui button" to="/login">Log in</Link>
+                    </div>
+                    <div className="item">
+                        <Link className="ui primary button" to="/signup">Sign Up</Link>
+                    </div>
                 </div>
 
 
                 <div className="pusher">
                     <div className="ui inverted vertical masthead center aligned segment background">
+
+                        <div class="ui container">
+                            <div class="ui large secondary inverted pointing menu">
+                                <a class="toc item">
+                                    <i class="sidebar icon"></i>
+                                </a>
+                                <a class="active item">Home</a>
+                                <a class="item">Work</a>
+                                <a class="item">Company</a>
+                                <a class="item">Careers</a>
+                                <div class="right item">
+                                    <Link className="ui inverted button" to="/login">Log in</Link>
+                                    <Link className="ui inverted button" to="/signup">Sign Up</Link>
+                                </div>
+                            </div>
+                        </div>
 
                         <div className="ui text container">
                             <h1 className="ui inverted header">

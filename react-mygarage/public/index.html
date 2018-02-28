@@ -21,7 +21,7 @@
     -->
 
     <title>Homepage - MyGarage</title>
-    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/reset.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/reset.css">
     <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/site.css">
 
     <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/container.css">
@@ -37,9 +37,9 @@
     <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/list.css">
     <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/icon.css">
     <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/sidebar.css">
-    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/transition.css">
+    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/components/transition.css">-->
 
-    <style type="text/css">
+    <!--<style type="text/css">
 
       .hidden.menu {
         display: none;
@@ -133,9 +133,9 @@
       }
 
 
-    </style>
+    </style>-->
 
-    <script src="https://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <!--<script src="https://semantic-ui.com/javascript/library/jquery.min.js"></script>
     <script src="https://semantic-ui.com/dist/components/visibility.js"></script>
     <script src="https://semantic-ui.com/dist/components/sidebar.js"></script>
     <script src="https://semantic-ui.com/dist/components/transition.js"></script>
@@ -156,22 +156,31 @@
                     })
                 ;
 
-                // create sidebar and attach to menu open
-                $('.ui.sidebar')
-                    .sidebar('attach events', '.toc.item')
-                ;
+                $('#sss').click(function (e) {
+                    $('.mini.modal').modal('show');
+                });
+
 
             })
         ;
-    </script>
+    </script>-->
 
-    <style>
+    <!--<style>
       .fixed-width {
         width: 266px;
         height:190px;
         min-width: 266px;
         min-height:190px;
         border:1px solid #000000;
+      }
+    </style>-->
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
+
+    <style>
+      .ui.basic.modal{
+        margin-top: -117px;
+        margin-left: -15%;
       }
     </style>
 
