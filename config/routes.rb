@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      devise_for :users, skip: [:sessions], :controllers => { registrations: 'registrations' }
+      devise_for :users, skip: [:sessions], :controllers => { registrations: 'api/v1/registrations' }
       resources :sessions, only: [:create, :destroy]
       resources :vehicles, only: [:index, :create, :destroy, :update, :show] do
         resources :service_records, only: [:index, :create, :destroy, :update, :show]

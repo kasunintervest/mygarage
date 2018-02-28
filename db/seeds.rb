@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# user = User.create!(first_name: 'Admin', last_name: 'P', email: 'admin@mygarage.lk', password: 'admin@mygarage')
-# user.add_role :admin
+user = User.create!(first_name: 'Admin', last_name: 'P', email: 'admin@mygarage.lk', password: 'admin@mygarage')
+user.remove_role :customer
+user.add_role :admin
 
 ServiceType.create!(name: 'Free Service', publish: 1)
 ServiceType.create!(name: 'Warranty Repair', publish: 1)

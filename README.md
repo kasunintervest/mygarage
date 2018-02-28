@@ -20,6 +20,12 @@ Install Ruby
 rvm install ruby-2.3.6
 rvm --default use ruby-2.3.6
 
+OR without RVM install Ruby 2.3
+----------------------------------
+$ sudo apt-add-repository ppa:brightbox/ruby-ng
+$ sudo apt-get update
+$ sudo apt-get install ruby2.3 ruby2.3-dev
+
 
 Install ImageMagick
 ----------------------------------
@@ -42,19 +48,20 @@ rails db:migrate
 sudo chmod 777 -R public/system
 
 
-#API ROUTES
+**** How to: Ruby on Rails + Ubuntu + Apache with Passenger
+===========================================================
+Install Phusion Passenger (an Apache module that lets you run Rails apps easily):
+------------------------------------------------------------------------------
+sudo gem install passenger
+sudo passenger-install-apache2-module
 
-Sign in
------------------------------------
-POST : http://localhost:3000/api/v1/sessions
-    params: user_email, password
-    response: user_token, email
+The passenger-install-apache2-module script will guide you through what you need to do to get Passenger working. It
+should tell you to copy these lines into your /etc/apache2/apache2.conf:
 
-Logout
------------------------------------
-DELETE: http://localhost:3000/api/v1/sessions/1
-    params: user_token
+LoadModule passenger_module /var/lib/gems/2.3.0/gems/passenger-5.2.1/buildout/apache2/mod_passenger.so
+<IfModule mod_passenger.c>
+ PassengerRoot /var/lib/gems/2.3.0/gems/passenger-5.2.1
+ PassengerDefaultRuby /usr/bin/ruby2.3
+</IfModule>
 
-Get resource
------------------------------------
-http://localhost:3000/api/v1/vehicles.json?user_email=admin@example.com&user_token=MHKyhSuXg2QN1h7mnTEX
+MORE INFO: https://nathanhoad.net/how-to-ruby-on-rails-ubuntu-apache-with-passenger
