@@ -28,5 +28,11 @@ export default {
             ).then(res => res.data),
         update: (id,vehicle) => axiosClient.put("/api/v1/vehicles/"+id+".json", vehicle).then(res => res.data),
         delete:(id) =>axiosClient.delete("/api/v1/vehicles/"+id+".json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,{ user_email:localStorage.email,user_token:localStorage.mygarageJWT  }).then(res => res.data)
+    },
+
+    service:{
+        fetchServiceRecords: (id) => axiosClient.get("http://localhost:3000/api/v1/vehicles/"+id+"/service_records.json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,).then(function (res) {
+            return res;
+        })
     }
 };

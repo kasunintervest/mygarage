@@ -1,6 +1,5 @@
 import {createSelector} from 'reselect';
-import {VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED , VEHICLE_FETCHED ,VEHICLE_UPDATED} from "../types";
-import { fetchVehicles  } from "../../src/actions/vehicles";
+import {VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED , VEHICLE_FETCHED ,VEHICLE_UPDATED } from "../types";
 
 
 export default function vehicles(state = {}, action = {}) {

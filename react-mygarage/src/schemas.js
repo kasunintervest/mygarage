@@ -5,3 +5,9 @@ export const vehicleSchema = new schema.Entity(
     {},
     { idAttribute: "_id" }
 );
+
+export const serviceRecordsSchema = new schema.Entity(
+    "service_records",
+    {},
+    { idAttribute: "_id" }
+);

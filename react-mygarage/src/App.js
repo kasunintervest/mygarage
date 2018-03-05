@@ -13,6 +13,7 @@ import GuestRoute from './components/routes/GuestRoute';
 import TopNavigation from './components/navigation/TopNavigation';
 import VehicleForm from "./Forms/VehicleForm";
 import UserProfilePage from "./components/pages/UserProfilePage";
+import VehicleServiceRecordsPage from "./components/pages/VehicleServiceRecordsPage";
 
 const App = ({location , isAuthenticated}) => (
     <div>
@@ -25,6 +26,12 @@ const App = ({location , isAuthenticated}) => (
         <UserRoute  location={location} path="/vehicles/list" exact component={MyVehiclesPage}/>
         <UserRoute  location={location} path="/vehicle/:id" exact component={VehicleForm}/>
         <UserRoute  location={location} path="/profile/:id" exact component={UserProfilePage}/>
+        <UserRoute  location={location} path="/vehicle/:id/service/records" exact component={VehicleServiceRecordsPage}/>
+        {isAuthenticated && <div className="ui inverted vertical footer segment form-page">
+            <div className="ui container">
+                Intervest 2018 . All Rights Reserved
+            </div>
+        </div>}
     </div>
 );
 
