@@ -20,6 +20,7 @@ Install Ruby
 rvm install ruby-2.3.6
 rvm --default use ruby-2.3.6
 
+
 OR without RVM install Ruby 2.3
 ----------------------------------
 $ sudo apt-add-repository ppa:brightbox/ruby-ng
@@ -27,9 +28,14 @@ $ sudo apt-get update
 $ sudo apt-get install ruby2.3 ruby2.3-dev
 
 
+Install Rails
+----------------------------------
+gem install rails -v rails_version
+
+
 Install ImageMagick
 ----------------------------------
-sudo apt-get install imagemagick
+sudo apt-get install 5.1.4
 
 
 Install MyGarage App
@@ -48,10 +54,9 @@ rails db:migrate
 sudo chmod 777 -R public/system
 
 
-**** How to: Ruby on Rails + Ubuntu + Apache with Passenger
-===========================================================
 Install Phusion Passenger (an Apache module that lets you run Rails apps easily):
 ------------------------------------------------------------------------------
+Note: If you have installed ruby from RVM and the system, you should only use one, remove other one before install passenger.
 sudo gem install passenger
 sudo passenger-install-apache2-module
 
@@ -65,3 +70,12 @@ LoadModule passenger_module /var/lib/gems/2.3.0/gems/passenger-5.2.1/buildout/ap
 </IfModule>
 
 MORE INFO: https://nathanhoad.net/how-to-ruby-on-rails-ubuntu-apache-with-passenger
+
+
+OTHER RESOURCES
+-----------------------------
+https://rvm.io/integration/gnome-terminal
+https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-on-ubuntu-14-04-using-rvm
+
+
+
