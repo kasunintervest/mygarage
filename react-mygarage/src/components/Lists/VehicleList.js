@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import VehicleCard from '../Lists/VehicleCard';
 import { Link } from 'react-router-dom';
-import {Card,Icon} from 'semantic-ui-react';
+import {Icon} from 'semantic-ui-react';
 
 export default function VehicleList({ vehicles , deleteVehicle  }) {
 
@@ -15,14 +15,14 @@ export default function VehicleList({ vehicles , deleteVehicle  }) {
 
             <div className="ui card">
                 <Link to="/vehicles/new">
-                <div class="cards">
+                <div className="cards">
                     <br/>
                     <br/>
                     <br/>
                     <br/>
 
-                    <div class="content">
-                        <div class="center aligned description">
+                    <div className="content">
+                        <div className="center aligned description">
                             <p><Icon name="plus" size="massive" ></Icon></p>
                         </div>
                     </div>

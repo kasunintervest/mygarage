@@ -1,7 +1,7 @@
 import { normalize } from "normalizr";
-import { VEHICLES_FETCHED, VEHICLE_CREATED , VEHICLE_DELETED , VEHICLE_FETCHED , VEHICLE_UPDATED } from "../types";
+import { VEHICLES_FETCHED, VEHICLE_CREATED, VEHICLE_DELETED, VEHICLE_FETCHED, VEHICLE_UPDATED, VEHICLE_SERVICE_RECORDS_FETCHED } from "../types";
 import api from "../api";
-import { vehicleSchema } from "../schemas";
+import { vehicleSchema , serviceRecordsSchema } from "../schemas";
 import vehicles from "../reducers/vehicles";
 
 // data.entities.books
@@ -30,6 +30,11 @@ const vehicleDeleted = id => ({
     id
 });
 
+const serviceRecordsFetched = data => ({
+    type: VEHICLE_SERVICE_RECORDS_FETCHED,
+    data
+});
+
 export const fetchVehicles = () => dispatch =>
     api.vehicles
         .fetchAll()
@@ -56,3 +61,12 @@ export const updateVehicle = (id,vehicle) => dispatch =>
 
 
 export const deleteVehicle = (id) => dispatch => api.vehicles.delete(id).then(data => dispatch(vehicleDeleted(id)));
+
+/*export function fetchVehicleServiceRecords(id){
+        return response;
+}*/
+
+export const fetchVehicleServiceRecords = (id) => dispatch =>
+    api.service
+        .fetchServiceRecords(id)
+        .then(service_records => dispatch(serviceRecordsFetched(normalize(service_records, [serviceRecordsSchema]))));

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Container,Loader,Button, Header, Icon, Modal } from 'semantic-ui-react'
-import '../../styles/deleteVehicleModel.css'
+import React, { Component } from 'react';
+import { Container,Loader,Button, Header, Icon, Modal } from 'semantic-ui-react';
+import '../../styles/deleteVehicleModel.css';
 
 export default class DeleteVehicleConformModel extends Component {
     state = {
@@ -21,7 +21,7 @@ export default class DeleteVehicleConformModel extends Component {
         const { loading,open } = this.state
 
         return (
-            <di className="ui basic button red" onClick={this.showModel}><i className="trash alternate outline icon"></i>
+            <div className="ui basic button red" onClick={this.showModel} data-tooltip="Delete vehicle"><i className="trash alternate outline icon"></i>
                 <Modal
                     className="vehicleModel"
                     open={open}  basic size='small' closeOnEscape={false} closeOnRootNodeClick={false}>
@@ -60,7 +60,7 @@ export default class DeleteVehicleConformModel extends Component {
                     </Container>
 
                 </Modal>
-            </di>
+            </div>
         )
     }
 }
