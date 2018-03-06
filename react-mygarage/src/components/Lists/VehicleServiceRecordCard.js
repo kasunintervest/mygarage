@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
 import {Icon,Rating,Button,Card,Grid,Image} from 'semantic-ui-react';
 //import DeleteVehicleServiceRecordConformModel from '../models/DeleteVehicleServiceRecordConformModel';
 
@@ -8,31 +6,49 @@ export default function VehicleServiceRecordCard({ serviceRecord  }) {
 
     return (
         <Card fluid>
-
-            {console.log(serviceRecord)}
             <Card.Content>
                 <Grid>
                     <Grid.Column width={3}>
-                        <Image className="large" src='https://www.northsomersetccg.nhs.uk/media/document_thumbnails/community-health-services-wider-stakeholder-event-.png' />
+                            <Image className="large" src={'http://localhost:3000'+serviceRecord.attachment_url.medium} />
                     </Grid.Column>
                     <Grid.Column width={10}>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa strong. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ul.
-                        </p>
+                            <div className="content">
+                                <p className="ui sub ">{serviceRecord.details}</p>
+                                <div className="ui small feed">
+                                    <div className="event">
+                                        <div className="content">
+                                            <div className="summary">
+                                                <a>Date : </a> {serviceRecord.service_date}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="event">
+                                        <div className="content">
+                                            <div className="summary">
+                                                <a>Mileage : </a> {serviceRecord.mileage}km
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="event">
+                                        <div className="content">
+                                            <div className="summary">
+                                                <a>Cost : </a> {serviceRecord.cost}/=
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </Grid.Column>
                     <Grid.Column width={5}>
                         <Card>
                             <Card.Content>
                                 <Image floated='right' size='mini' src='http://www.vanlock.ie/wp-content/uploads/2017/07/toyota-logo.png' />
                                 <Card.Header>
-                                    Toyota Lanka (PVT) Ltd
+                                    {serviceRecord.service_company.name}
                                 </Card.Header>
-                                <Card.Meta>
-                                    2018-02-22
-                                </Card.Meta>
                                 <br/>
                                 <Card.Description>
-                                    Service type: <strong>General</strong>
+                                    Service type: <strong>{serviceRecord.service_type.name}</strong>
                                 </Card.Description>
                                 <br/>
                                 <Card.Meta>
@@ -45,7 +61,7 @@ export default function VehicleServiceRecordCard({ serviceRecord  }) {
 
                             <Card.Content extra>
                                 <div className='ui three buttons'>
-                                    <Button basic color='green' data-tooltip="View Toyota Lanka (PVT) Ltd profile ">
+                                    <Button basic color='green' data-tooltip={ 'View '+serviceRecord.service_company.name+' profile'}>
                                         <Icon className="address card outline"/>
                                     </Button>
                                     <Button basic color='blue' data-tooltip="Edit service details">

@@ -35,7 +35,7 @@ class UserProfilePage extends React.Component {
         });
         if (Object.keys(errors).length === 0) {
 
-            if(this.props.user.user_id != '') {
+            if(this.props.user.user_id !== '') {
                 this.props
                     .updateUser(this.props.user.user_id,this.state.data)
                     .catch(err =>

@@ -14,26 +14,37 @@ import TopNavigation from './components/navigation/TopNavigation';
 import VehicleForm from "./Forms/VehicleForm";
 import UserProfilePage from "./components/pages/UserProfilePage";
 import VehicleServiceRecordsPage from "./components/pages/VehicleServiceRecordsPage";
+import ServiceCompanyPage from "./components/pages/ServiceCompanyPage";
+import mainCss from './styles/mainIndex.css'
 
 const App = ({location , isAuthenticated}) => (
-    <div>
-        {isAuthenticated && <TopNavigation />}
-        <Route location={location} path="/" exact component={HomePage}/>
-        <GuestRoute  location={location} path="/login" exact component={LoginPage}/>
-        <GuestRoute  location={location} path="/signup" exact component={SignupPage}/>
-        <UserRoute  location={location} path="/dashboard" exact component={DashboardPage}/>
-        <UserRoute  location={location} path="/vehicles/new" exact component={NewVehiclePage}/>
-        <UserRoute  location={location} path="/vehicles/list" exact component={MyVehiclesPage}/>
-        <UserRoute  location={location} path="/vehicle/:id" exact component={VehicleForm}/>
-        <UserRoute  location={location} path="/profile/:id" exact component={UserProfilePage}/>
-        <UserRoute  location={location} path="/vehicle/:id/service/records" exact component={VehicleServiceRecordsPage}/>
-        {isAuthenticated && <div className="ui inverted vertical footer segment form-page">
-            <div className="ui container">
-                Intervest 2018 . All Rights Reserved
+            <div class="main-container">
+                <header>
+                    {isAuthenticated && <TopNavigation />}
+                </header>
+                <section>
+                    <Route location={location} path="/" exact component={HomePage}/>
+                    <GuestRoute  location={location} path="/login" exact component={LoginPage}/>
+                    <GuestRoute  location={location} path="/signup" exact component={SignupPage}/>
+                    <UserRoute  location={location} path="/dashboard" exact component={DashboardPage}/>
+                    <UserRoute  location={location} path="/vehicles/new" exact component={NewVehiclePage}/>
+                    <UserRoute  location={location} path="/vehicles/list" exact component={MyVehiclesPage}/>
+                    <UserRoute  location={location} path="/vehicle/:id" exact component={VehicleForm}/>
+                    <UserRoute  location={location} path="/profile/:id" exact component={UserProfilePage}/>
+                    <UserRoute  location={location} path="/vehicle/:id/service/records" exact component={VehicleServiceRecordsPage}/>
+                    <UserRoute  location={location} path="/service/companies" exact component={ServiceCompanyPage}/>
+                </section>
+                <footer>
+                    {
+                        isAuthenticated && <div id="footer" className="ui inverted vertical footer segment form-page footer-div">
+                        <div className="ui container">
+                            Intervest 2018 . All Rights Reserved
+                        </div>
+                        </div>
+                    }
+                </footer>
             </div>
-        </div>}
-    </div>
-);
+            );
 
 App.propTypes = {
     location: PropTypes.shape({

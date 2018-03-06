@@ -3,7 +3,7 @@ import {Form,Button} from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
 import {connect} from 'react-redux'
 import { fetchVehicle,updateVehicle } from "../actions/vehicles";
-import { findDOMNode } from 'react-dom';
+/*import { findDOMNode } from 'react-dom';*/
 
 class VehicleForm extends React.Component {
 

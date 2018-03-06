@@ -29,7 +29,7 @@ export default function VehicleList({ vehicles , deleteVehicle  }) {
                 </div>
                 </Link>
             </div>
-            { vehicles.length != 0 && vehicles.map(vehicle => vehicle != undefined && <VehicleCard vehicle={vehicle} key={vehicle.id} deleteVehicle={deleteVehicle} />) }
+            { vehicles.length !== 0 && vehicles.map(vehicle => vehicle !== undefined && <VehicleCard vehicle={vehicle} key={vehicle.id} deleteVehicle={deleteVehicle} />) }
         </div>
     );
 

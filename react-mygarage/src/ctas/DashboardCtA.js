@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Card,Icon} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
@@ -29,6 +28,15 @@ const DashboardCtA = ({user}) => (
                 <Card.Content textAlign="center">
                     <Card.Header>Edit my profile</Card.Header>
                     <Link to={`/profile/${user.user_id}`}><Icon name="user" size="massive" ></Icon></Link>
+                </Card.Content>
+            </Card>
+        </div>
+
+        <div className="four wide column">
+            <Card centered>
+                <Card.Content textAlign="center">
+                    <Card.Header>Service Companies</Card.Header>
+                    <Link to="service/companies"><Icon name="settings" size="massive" ></Icon></Link>
                 </Card.Content>
             </Card>
         </div>

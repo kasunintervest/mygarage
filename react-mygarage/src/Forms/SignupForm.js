@@ -1,7 +1,5 @@
 import React from 'react';
-import {Form,Button,Message} from 'semantic-ui-react';
-import Validator from 'validator';
-import isEmail from 'validator/lib/isEmail';
+import {Form} from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
 import PropTypes from 'prop-types';
 

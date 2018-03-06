@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import VehicleForm from '../../Forms/VehicleForm';
-import {Segment} from 'semantic-ui-react';
 import { createVehicle } from "../../actions/vehicles";
 
 class NewVehiclePage extends React.Component {

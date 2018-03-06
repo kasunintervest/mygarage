@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container,Loader,Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Container,Loader,Button, Icon, Modal } from 'semantic-ui-react';
 import '../../styles/deleteVehicleModel.css';
 
 export default class DeleteVehicleConformModel extends Component {

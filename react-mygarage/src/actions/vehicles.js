@@ -1,8 +1,7 @@
 import { normalize } from "normalizr";
-import { VEHICLES_FETCHED, VEHICLE_CREATED, VEHICLE_DELETED, VEHICLE_FETCHED, VEHICLE_UPDATED, VEHICLE_SERVICE_RECORDS_FETCHED } from "../types";
+import { VEHICLES_FETCHED, VEHICLE_CREATED, VEHICLE_DELETED, VEHICLE_FETCHED, VEHICLE_UPDATED, VEHICLE_SERVICE_RECORDS_FETCHED , SERVICE_COMPANIES_FETCHED } from "../types";
 import api from "../api";
-import { vehicleSchema , serviceRecordsSchema } from "../schemas";
-import vehicles from "../reducers/vehicles";
+import { vehicleSchema , serviceRecordsSchema,serviceCompanySchema } from "../schemas";
 
 // data.entities.books
 const vehiclesFetched = data => ({
@@ -35,6 +34,16 @@ const serviceRecordsFetched = data => ({
     data
 });
 
+const serviceCompaniesFetched = data => ({
+    type: SERVICE_COMPANIES_FETCHED,
+    data
+});
+
+
+
+
+
+
 export const fetchVehicles = () => dispatch =>
     api.vehicles
         .fetchAll()
@@ -59,14 +68,16 @@ export const updateVehicle = (id,vehicle) => dispatch =>
             vehicleUpdated(vehicle)
         ));
 
-
 export const deleteVehicle = (id) => dispatch => api.vehicles.delete(id).then(data => dispatch(vehicleDeleted(id)));
 
-/*export function fetchVehicleServiceRecords(id){
-        return response;
-}*/
 
 export const fetchVehicleServiceRecords = (id) => dispatch =>
     api.service
         .fetchServiceRecords(id)
         .then(service_records => dispatch(serviceRecordsFetched(normalize(service_records, [serviceRecordsSchema]))));
+
+
+export const fetchServiceCompanies = () => dispatch =>
+    api.service_companies
+        .fetchAll()
+        .then(service_companies => dispatch(serviceCompaniesFetched(normalize(service_companies, [serviceCompanySchema]))));

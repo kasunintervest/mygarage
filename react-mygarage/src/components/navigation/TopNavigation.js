@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Menu,Dropdown,Image} from 'semantic-ui-react';
+import {Image} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import gravatarUrl from 'gravatar-url'
@@ -14,7 +14,7 @@ const TopNavigation = ({user , logout}) => (
     <div className="ui menu">
 
         <Link className="item" to="/dashboard">
-            <img src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" className="ui avatar image"/>
+            <img alt="" src="https://www.xpresslubelakewood.com/wp-content/uploads/2015/11/mygarage300-your1.png" className="ui avatar image"/>
             Dashboard
         </Link>
         <div className="right menu">
@@ -33,7 +33,7 @@ const TopNavigation = ({user , logout}) => (
                     {/*<i className="dropdown icon"></i>*/}
                     <div className="menu">
                         <div className="item">
-                            <img className="ui avatar image" src="/images/avatar/small/jenny.jpg"/>
+                            <img alt="" className="ui avatar image" src="/images/avatar/small/jenny.jpg"/>
                         </div>
                     </div>
                 </div>

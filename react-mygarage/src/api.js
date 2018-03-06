@@ -1,6 +1,5 @@
-import axios from 'axios';
 import axiosClient from '../src/axiosClient';
-const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+//const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 export default {
     user: {
         login: (credentials) =>
@@ -30,9 +29,11 @@ export default {
         delete:(id) =>axiosClient.delete("/api/v1/vehicles/"+id+".json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,{ user_email:localStorage.email,user_token:localStorage.mygarageJWT  }).then(res => res.data)
     },
 
-    service:{
-        fetchServiceRecords: (id) => axiosClient.get("http://localhost:3000/api/v1/vehicles/"+id+"/service_records.json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT,).then(function (res) {
-            return res;
-        })
-    }
+    service: {
+        fetchServiceRecords: (id) => axiosClient.get("http://localhost:3000/api/v1/vehicles/" + id + "/service_records.json?user_email=" + localStorage.email + '&user_token=' + localStorage.mygarageJWT).then(res => res)
+    },
+
+    service_companies: {
+        fetchAll: () => axiosClient.get("http://localhost:3000/api/v1/service_companies.json?user_email="+localStorage.email+'&user_token='+localStorage.mygarageJWT).then(res => res),
+    },
 };
