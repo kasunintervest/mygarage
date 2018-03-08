@@ -12,7 +12,7 @@ class AddNewServiceRecordPage extends React.Component {
 
     addServiceRecord = (id,service_record) => this.props
         .newServiceRecord(id,service_record)
-        .then(() => this.props.history.push("/vehicles/list"));
+        .then(() => this.props.history.push("/vehicle/"+id+"/service/records"));
 
     render(){
         return (

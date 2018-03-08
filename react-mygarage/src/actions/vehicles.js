@@ -95,9 +95,8 @@ export const fetchServiceRecord = (id,veh_id) => dispatch =>
         .fetchServiceRecord(id,veh_id)
         .then(service_record => dispatch(serviceRecordFetched(service_record.data)));
 
-export const updateServiceRecord = (id,service_record) => dispatch =>
-    api.service
-        .updateServiceRecord(id,service_record)
+export const updateServiceRecord = (id,veh_id,service_record) => dispatch =>
+    api.service.updateServiceRecord(id,veh_id,service_record)
         .then(service_record => dispatch(
             serviceRecordUpdated(service_record)
         ));

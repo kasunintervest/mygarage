@@ -41,7 +41,11 @@ class VehicleServiceRecordsPage extends React.Component {
                 </Header>
                 <Link to={`/vehicle/service/${this.props.match.params.id}/add`} className="ui teal labeled icon button" data-tooltip="Edit vehicle details">
                         New Service Record
-                        <i class="add icon"></i>
+                        <i className="add icon"></i>
+                </Link>
+                <Link to='/vehicles/list' className="ui teal labeled icon button" data-tooltip="Back to my vehicles page">
+                        My Vehicles
+                        <i className="angle left icon"></i>
                 </Link>
 
                 <p></p>

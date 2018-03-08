@@ -299,7 +299,15 @@ class VehicleForm extends React.Component {
                             {$imagePreview}
                     </Form.Field>
 
-                    <Button primary>{this.state.loading ? 'Saving...' : 'Save'}</Button>
+                    <Button className="ui red labeled icon button" data-tooltip="Save new vehicle" primary>{this.state.loading ? 'Saving...' : 'Save'}
+                        <i className="save icon"></i>
+                    </Button>
+
+                    <a href='/vehicles/list' className="ui red labeled icon button" data-tooltip="Back to my vehicles page">
+                        Cancel
+                        <i className="reply icon"></i>
+                    </a>
+
                 </Form>
                 <br/>
             </div>

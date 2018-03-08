@@ -32,15 +32,16 @@ class AddNewServiceRecordForm extends React.Component {
 
     componentWillReceiveProps = (nextProps) => {
 
+        console.log(nextProps);
         this.setState({
             data:{
                 id: nextProps.service_record.id,
-                service_type_id: nextProps.service_record.service_type_id,
+                service_type_id: nextProps.service_record.service_type.id,
                 service_date: nextProps.service_record.service_date,
                 details: nextProps.service_record.details,
                 mileage: nextProps.service_record.mileage,
                 cost: nextProps.service_record.cost,
-                service_company_id: nextProps.service_record.service_company_id,
+                service_company_id: nextProps.service_record.service_company.id,
                 attachment: nextProps.service_record.attachment_url,
                 user_email: localStorage.email,
                 user_token: localStorage.mygarageJWT
@@ -96,12 +97,11 @@ class AddNewServiceRecordForm extends React.Component {
         });
         if (Object.keys(errors).length === 0) {
             if(this.state.data.id != '') {
-
-                /*this.props
-                    .updateVehicle(this.state.data.id,this.buildFormData())
+                this.props
+                    .updateServiceRecord(this.props.service_record.id,this.props.service_record.vehicle.id,this.buildFormData())
                     .catch(err =>
                         this.setState({ errors: !!err.response && !!err.response.data.errors ? err.response.data.errors : {}, loading: false })
-                    ).then(()=>this.props.history.push("/vehicles/list"));*/
+                    ).then(()=>this.props.history.push("/vehicle/"+this.props.service_record.vehicle.id+"/service/records"));
             }else {
 
                 this.props
@@ -199,7 +199,7 @@ class AddNewServiceRecordForm extends React.Component {
                                 id="service_type_id"
                                 name="service_type_id"
                                 placeholder="Service Type"
-                                selectedId={ typeof this.props.service_record.service_type !== 'undefined' && this.props.service_record.service_type.id}
+                                selectedId={ !!this.props.service_record && typeof this.props.service_record.service_type !== 'undefined' && this.props.service_record.service_type.id}
                                 options={{className:"fluid search selection"}}
                                 onChange={this.onChange}
                             />
@@ -213,7 +213,7 @@ class AddNewServiceRecordForm extends React.Component {
                                 id="service_company_id"
                                 name="service_company_id"
                                 placeholder="Service Company"
-                                selectedId={ typeof this.props.service_record.service_company !== 'undefined' && this.props.service_record.service_company.id}
+                                selectedId={ !!this.props.service_record && typeof this.props.service_record.service_company !== 'undefined' && this.props.service_record.service_company.id}
                                 options={{className:"fluid search selection"}}
                                 onChange={this.onChange}
                             />
@@ -288,7 +288,16 @@ class AddNewServiceRecordForm extends React.Component {
                             {$imagePreview}
                         </Form.Field>}
                     </Form.Group>
-                    <Button primary>{this.state.loading ? 'Saving...' : 'Save'}</Button>
+
+                    <Button className="ui red labeled icon button" data-tooltip="Update service history" primary>{this.state.loading ? 'Saving...' : 'Save'}
+                        <i className="save icon"></i>
+                    </Button>
+
+                    <a href={`/vehicle/${this.props.match.params.veh_id}/service/records`} className="ui red labeled icon button" data-tooltip="Back to service info page">
+                        Cancel
+                        <i className="reply icon"></i>
+                    </a>
+
                 </Form>
             </div>
         );

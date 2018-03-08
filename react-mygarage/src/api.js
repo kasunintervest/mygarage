@@ -36,7 +36,7 @@ export default {
             service_record
         ).then(res => res.data),
         fetchServiceRecord: (id,veh_id) => axiosClient.get("http://localhost:3000/api/v1/vehicles/" + veh_id + "/service_records/"+id+".json?user_email=" + localStorage.email + '&user_token=' + localStorage.mygarageJWT).then(res => res),
-
+        updateServiceRecord: (id,veh_id,service_record) => axiosClient.put("http://localhost:3000/api/v1/vehicles/" + veh_id + "/service_records/"+id+".json", service_record).then(res => res.data),
     },
 
     service_companies: {

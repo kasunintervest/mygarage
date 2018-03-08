@@ -42,7 +42,15 @@ export default function UserProfileEditForm({ onSubmit,loading, user  , errors ,
                         {errors.last_name && <InlineError text={errors.last_name}/>}
                     </Form.Field>
 
-                    <Button primary>{loading ? 'Saving...' : 'Save'}</Button>
+                    <Button className="ui red labeled icon button" data-tooltip="Update profile info" primary>
+                        {loading ? 'Saving...' : 'Save'}
+                        <i className="save icon"></i>
+                    </Button>
+
+                    <a href='/dashboard' className="ui red labeled icon button" data-tooltip="Back to dashboard page">
+                        Cancel
+                        <i className="reply icon"></i>
+                    </a>
                 </Form>
             </div>
         </div>
