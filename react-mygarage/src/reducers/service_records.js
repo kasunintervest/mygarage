@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {VEHICLE_SERVICE_RECORDS_FETCHED} from "../types";
+import {VEHICLE_SERVICE_RECORDS_FETCHED , VEHICLE_SERVICE_RECORD_FETCHED} from "../types";
 
 export default function service_records(state = {}, action = {}) {
     switch (action.type) {
@@ -8,6 +8,9 @@ export default function service_records(state = {}, action = {}) {
                 return {...state, ...action.data.entities.service_records.undefined};
             }
             return false;
+        }
+        case VEHICLE_SERVICE_RECORD_FETCHED: {
+            return {...state, ...action.service_record}
         }
         default:
             return state;

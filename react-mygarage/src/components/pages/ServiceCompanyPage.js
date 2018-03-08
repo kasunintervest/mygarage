@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
-import { fetchServiceCompanies } from "../../actions/vehicles";
+import { fetchServiceCompanies } from "../../actions/ServiceCompany";
 import {allServiceCompaniesSelector} from '../../reducers/service_companies';
 import {Message,Loader,Header,Icon} from 'semantic-ui-react';
 import ServiceCompanyList from '../Lists/ServiceCompanyList';

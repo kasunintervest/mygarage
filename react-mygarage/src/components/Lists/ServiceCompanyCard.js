@@ -7,13 +7,9 @@ export default function ServiceCompanyCard({ company }) {
 
     return (
 
-
         <div class="ui card">
 
-            {console.log(company)}
-
-
-            <div class="content">
+            <div class="extra content ">
                 <div class="header">{company.name} <Image floated='right' size='mini' src='http://www.vanlock.ie/wp-content/uploads/2017/07/toyota-logo.png' /></div>
             </div>
             <div class="content">
@@ -61,14 +57,12 @@ export default function ServiceCompanyCard({ company }) {
                             </div>
                         </div>
                     </div>
-
-                    <br/>
-                    <Card.Description>
-                        <Rating maxRating={5} defaultRating={3} icon='star' size='huge' disabled={true}/>
-                    </Card.Description>
                 </div>
             </div>
 
+            <div class="extra content ">
+                <Rating maxRating={5} defaultRating={3} icon='star' size='huge' disabled={true}/>
+            </div>
 
             <div class="extra content ">
                 <span class="right floated ">

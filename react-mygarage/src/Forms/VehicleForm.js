@@ -180,13 +180,13 @@ class VehicleForm extends React.Component {
         let {imagePreviewUrl} = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} />);
+            $imagePreview = (<img  className="ui small image" src={imagePreviewUrl} />);
         }else {
             if(this.state.data.image && !!this.state.data.pictures == false){
-                $imagePreview = (<img src={'http://localhost:3000/'+this.state.data.image.medium} />);
+                $imagePreview = (<img  className="ui small image" src={'http://localhost:3000/'+this.state.data.image.medium} />);
             }else {
                 if(this.state.data.pictures){
-                    $imagePreview = (<img src={this.state.data.pictures} />);
+                    $imagePreview = (<img  className="ui small image"  src={this.state.data.pictures} />);
                 }
 
             }
@@ -198,6 +198,7 @@ class VehicleForm extends React.Component {
                 {this.state.data.id != '' && <h1>Edit vehicle</h1>}
                 <Form onSubmit={this.onSubmit} loading={loading}>
 
+                    <Form.Group widths='equal'>
                     {<Form.Field error={!!errors.name}>
                         <label htmlFor="name">Vehicle Type</label>
                         <input
@@ -237,7 +238,9 @@ class VehicleForm extends React.Component {
                         />
                         {errors.make && <InlineError text={errors.make}/>}
                     </Form.Field>
+                    </Form.Group>
 
+                    <Form.Group widths='equal'>
                     <Form.Field error={!!errors.model}>
                         <label htmlFor="model">Model</label>
                         <input
@@ -276,11 +279,10 @@ class VehicleForm extends React.Component {
                         />
                         {errors.colour && <InlineError text={errors.colour}/>}
                     </Form.Field>
-
+                    </Form.Group>
                     <Form.Field error={!!errors.details}>
                         <label htmlFor="details">details</label>
-                        <input
-                            type="text"
+                        <textarea
                             id="details"
                             name="details"
                             placeholder=""

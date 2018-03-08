@@ -1,15 +1,16 @@
 import React from 'react';
 import {Icon,Rating,Button,Card,Grid,Image} from 'semantic-ui-react';
 //import DeleteVehicleServiceRecordConformModel from '../models/DeleteVehicleServiceRecordConformModel';
+import {Link} from "react-router-dom";
 
-export default function VehicleServiceRecordCard({ serviceRecord  }) {
+export default function VehicleServiceRecordCard({ vehicle,serviceRecord  }) {
 
     return (
         <Card fluid>
             <Card.Content>
                 <Grid>
                     <Grid.Column width={3}>
-                            <Image className="large" src={'http://localhost:3000'+serviceRecord.attachment_url.medium} />
+                            <Image className="large" src={!!serviceRecord.attachment_url ? 'http://localhost:3000'+serviceRecord.attachment_url.medium : 'https://vignette.wikia.nocookie.net/simpsons/images/6/60/No_Image_Available.png/revision/latest?cb=20170219125728'} />
                     </Grid.Column>
                     <Grid.Column width={10}>
                             <div className="content">
@@ -64,9 +65,9 @@ export default function VehicleServiceRecordCard({ serviceRecord  }) {
                                     <Button basic color='green' data-tooltip={ 'View '+serviceRecord.service_company.name+' profile'}>
                                         <Icon className="address card outline"/>
                                     </Button>
-                                    <Button basic color='blue' data-tooltip="Edit service details">
+                                    <Link to={`/vehicle/service/${vehicle.id}/edit/${serviceRecord.id}`} basic color='blue' className="ui basic blue button" data-tooltip="Edit service details">
                                         <Icon className="edit"/>
-                                    </Button>
+                                    </Link>
                                     <Button basic color='red' data-tooltip="Delete service details">
                                         <Icon className="trash"/>
                                     </Button>

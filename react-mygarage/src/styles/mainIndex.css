@@ -26,3 +26,16 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.ui.small.image
+{
+    width: 300px;
+    height: 200px;
+    font-size: 1rem;
+}
+
+.ui.card > .content, .ui.cards > .card > .content >
+{
+    width: auto;
+    height: auto;
+}

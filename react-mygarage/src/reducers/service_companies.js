@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {SERVICE_COMPANIES_FETCHED} from "../types";
+import {SERVICE_COMPANIES_FETCHED,SERVICE_TYPES_FETCHED} from "../types";
 
 export default function service_companies(state = {}, action = {}) {
     switch (action.type) {
@@ -15,3 +15,4 @@ export const serviceCompanySelector = state => state.service_companies;
 export const allServiceCompaniesSelector = createSelector(serviceCompanySelector, companyHash =>
     Object.values(companyHash)
 );
+

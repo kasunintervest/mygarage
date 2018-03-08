@@ -1,7 +1,8 @@
 import { normalize } from "normalizr";
-import { VEHICLES_FETCHED, VEHICLE_CREATED, VEHICLE_DELETED, VEHICLE_FETCHED, VEHICLE_UPDATED, VEHICLE_SERVICE_RECORDS_FETCHED , SERVICE_COMPANIES_FETCHED } from "../types";
+import { VEHICLES_FETCHED, VEHICLE_CREATED, VEHICLE_DELETED, VEHICLE_FETCHED, VEHICLE_UPDATED, VEHICLE_SERVICE_RECORDS_FETCHED  ,SERVICE_RECORD_CREATED,
+    VEHICLE_SERVICE_RECORD_UPDATED , VEHICLE_SERVICE_RECORD_FETCHED} from "../types";
 import api from "../api";
-import { vehicleSchema , serviceRecordsSchema,serviceCompanySchema } from "../schemas";
+import { vehicleSchema , serviceRecordsSchema } from "../schemas";
 
 // data.entities.books
 const vehiclesFetched = data => ({
@@ -34,14 +35,20 @@ const serviceRecordsFetched = data => ({
     data
 });
 
-const serviceCompaniesFetched = data => ({
-    type: SERVICE_COMPANIES_FETCHED,
+const serviceRecordCreated = data => ({
+    type: SERVICE_RECORD_CREATED,
     data
 });
 
+const serviceRecordFetched = service_record => ({
+    type: VEHICLE_SERVICE_RECORD_FETCHED,
+    service_record
+});
 
-
-
+const serviceRecordUpdated = service_record => ({
+    type: VEHICLE_SERVICE_RECORD_UPDATED,
+    service_record
+});
 
 
 export const fetchVehicles = () => dispatch =>
@@ -76,8 +83,21 @@ export const fetchVehicleServiceRecords = (id) => dispatch =>
         .fetchServiceRecords(id)
         .then(service_records => dispatch(serviceRecordsFetched(normalize(service_records, [serviceRecordsSchema]))));
 
+export const newServiceRecord = (id,data) => dispatch =>
+    api.service.create(id,data)
+        .then(service_record => dispatch(
+            serviceRecordCreated(normalize(service_record, [serviceRecordsSchema]))
+        ));
 
-export const fetchServiceCompanies = () => dispatch =>
-    api.service_companies
-        .fetchAll()
-        .then(service_companies => dispatch(serviceCompaniesFetched(normalize(service_companies, [serviceCompanySchema]))));
+
+export const fetchServiceRecord = (id,veh_id) => dispatch =>
+    api.service
+        .fetchServiceRecord(id,veh_id)
+        .then(service_record => dispatch(serviceRecordFetched(service_record.data)));
+
+export const updateServiceRecord = (id,service_record) => dispatch =>
+    api.service
+        .updateServiceRecord(id,service_record)
+        .then(service_record => dispatch(
+            serviceRecordUpdated(service_record)
+        ));

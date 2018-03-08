@@ -15,10 +15,13 @@ import VehicleForm from "./Forms/VehicleForm";
 import UserProfilePage from "./components/pages/UserProfilePage";
 import VehicleServiceRecordsPage from "./components/pages/VehicleServiceRecordsPage";
 import ServiceCompanyPage from "./components/pages/ServiceCompanyPage";
+import AddNewServiceRecordPage from "./components/pages/AddNewServiceRecordPage";
+import AddNewServiceRecordForm from "./Forms/AddNewServiceRecordForm";
+
 import mainCss from './styles/mainIndex.css'
 
 const App = ({location , isAuthenticated}) => (
-            <div class="main-container">
+            <div className="main-container">
                 <header>
                     {isAuthenticated && <TopNavigation />}
                 </header>
@@ -33,6 +36,8 @@ const App = ({location , isAuthenticated}) => (
                     <UserRoute  location={location} path="/profile/:id" exact component={UserProfilePage}/>
                     <UserRoute  location={location} path="/vehicle/:id/service/records" exact component={VehicleServiceRecordsPage}/>
                     <UserRoute  location={location} path="/service/companies" exact component={ServiceCompanyPage}/>
+                    <UserRoute  location={location} path="/vehicle/service/:id/add" exact component={AddNewServiceRecordPage}/>
+                    <UserRoute  location={location} path="/vehicle/service/:veh_id/edit/:id" exact component={AddNewServiceRecordForm}/>
                 </section>
                 <footer>
                     {

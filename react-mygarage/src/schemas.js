@@ -17,3 +17,9 @@ export const serviceCompanySchema = new schema.Entity(
     {},
     { idAttribute: "_id" }
 );
+
+export const serviceTypesSchema = new schema.Entity(
+    "service_types",
+    {},
+    { idAttribute: "_id" }
+);

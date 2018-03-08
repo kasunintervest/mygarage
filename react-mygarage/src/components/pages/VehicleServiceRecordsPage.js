@@ -6,6 +6,7 @@ import {Message,Loader,Header,Icon} from 'semantic-ui-react';
 import {fetchVehicleServiceRecords}  from "../../actions/vehicles";
 import {serviceRecordsSelector} from '../../reducers/service_records';
 import { fetchVehicle } from "../../actions/vehicles";
+import {Link} from "react-router-dom";
 
 
 class VehicleServiceRecordsPage extends React.Component {
@@ -38,9 +39,15 @@ class VehicleServiceRecordsPage extends React.Component {
                         }
                     </Header.Subheader>
                 </Header>
+                <Link to={`/vehicle/service/${this.props.match.params.id}/add`} className="ui teal labeled icon button" data-tooltip="Edit vehicle details">
+                        New Service Record
+                        <i class="add icon"></i>
+                </Link>
+
+                <p></p>
                 <div className=" ui container centered" >
                     {
-                      !!this.state.loading ? <Loader active={true}/> : this.props.service_records[0] !== undefined && this.props.service_records[0].length >=1 ? <VehicleServiceRecordList vehicle={this.props.vehicle} serviceRecords={ this.props.service_records[0] } /> : <Message content="No service history found!"/>
+                      !!this.state.loading ? <Loader active={true}/> : this.props.service_records[0] !== undefined && this.props.service_records[0].length >=1 ? <VehicleServiceRecordList vehicle={this.props.vehicle} serviceRecords={ this.props.service_records[0] }  /> : <Message content="No service history found!"/>
                     }
                 </div>
             </div>
@@ -51,7 +58,7 @@ class VehicleServiceRecordsPage extends React.Component {
 VehicleServiceRecordsPage.propTypes = {
     service_records: PropTypes.array.isRequired,
     fetchVehicleServiceRecords: PropTypes.func.isRequired,
-    fetchVehicle: PropTypes.func.isRequired,
+    fetchVehicle: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
